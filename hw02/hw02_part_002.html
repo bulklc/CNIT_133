@@ -5,8 +5,23 @@
 <title>CNIT 133 - Christopher Bulkley - Logston - Homework 2 Page</title>
 <meta charset="utf-8">
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Homework 2 Page">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<script> 
+ /*   src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js";
+
+    $(myform).ready(function(){
+       $("button").click(function(){
+          $("#div1").fadeTo("slow", 0.0);
+          $("#div2").fadeTo("slow", 0.0);
+          $("#div3").fadeTo("slow", 0.0);
+                                    });
+                                 });
+
+*/
+
+</script>
 
 </head>
 <body>
@@ -42,16 +57,124 @@
 
   <h4>Assignment Info</h4>
 
-Nice Text here.
+<script>
 
-  </article>
+/* function fade_results()
+
+   {
+
+    ("sum").fadeTo("slow", 0);
+    ("avg").fadeTo("slow", 0);
+    ("prd").fadeTo("slow", 0);
+
+    } */
+   
+function process()
+
+   {
+
+    var warning, number1, number2, number3, n1, n2, n3, sum, avg, prd, minn, maxx;
+
+    warning = "";
+
+    number1 = document.forms["myform"].elements["num1"].value;
+    number2 = document.forms["myform"].elements["num2"].value;
+    number3 = document.forms["myform"].elements["num3"].value;
+
+    n1 = Number(number1);
+    n2 = Number(number2);
+    n3 = Number(number3);
+
+    /* n1 = number1;
+    n2 = number2;
+    n3 = number3;*/
+
+    if (isNaN(n1) || n1 == "" || isNaN(n2) || n2 == "" || isNaN (n3) || n3 == "") 
+
+        {
+
+        sum = avg = prd = minn = maxx = "";
+    
+        warning = "<br>Error:";
+
+        if (isNaN(n1) || n1 == "") {warning += "<br>Input for first number is not numeric.";}
+        if (isNaN(n2) || n2 == "") {warning += "<br>Input for second number is not numeric.";}
+        if (isNaN(n3) || n3 == "") {warning += "<br>Input for third number is not numeric.";}
+ 
+        }
+                                    
+        else 
+
+        {
+
+        sum = n1 + n2 + n3;
+        avg = sum / 3;
+        prd = n1 * n2 * n3;
+        minn = Math.min(n1, n2, n3);
+        maxx = Math.max(n1, n2, n3);
+
+        }
+
+    document.getElementById("sum").innerHTML = sum;
+    document.getElementById("avg").innerHTML = avg;
+    document.getElementById("prd").innerHTML = prd;
+    document.getElementById("minn").innerHTML = minn;
+    document.getElementById("maxx").innerHTML = maxx;
+    document.getElementById("warning").innerHTML = warning;
+
+   }
+
+</script>
+</head>
+
+<body>
+
+<section class="body">
+
+<form name="myform">
+<table>
+<tr>
+<td>First Number:</td>
+<td><input type="text" name="num1" size="10"></td>
+</tr>
+
+<tr>
+<td>Second Number:</td>
+<td><input type="text" name="num2" size="10"></td>
+</tr>
+
+<tr>
+<td>Third Number:</td>
+<td><input type="text" name="num3" size="10"></td>
+</tr>
+
+</table>
+<br>
+
+<input type="button" onclick="process()" value="Do Stuff">
+
+
+</form>
+
+<p>
+The sum of the three numbers is<br><textarea id="sum"></textarea><br><br>
+The average of the three numbers is<br><textarea id="avg"></textarea><br><br>
+The product of the three numbers is<br><textarea id="prd"></textarea><br><br>
+The minimum of the three numbers is<br><textarea id="minn"></textarea><br><br>
+The maximum of the three numbers is<br><textarea id="maxx"></textarea><br>
+
+<span style = 'color: red'; id="warning"></span>
+
+</p>
+
+</article>
 
 </section>
 
 <footer>
 <h4>Christopher Bulkley - Logston</h4>
 <h5>San Francisco City College - Fall 2020</h5>
-<h6>Last Updated 2020 - August - 29</h6>
+<h6>Last Updated 2020 - September - 6</h6>
 </footer>
 
 </body>
