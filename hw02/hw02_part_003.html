@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
-<title>CNIT 133 - Christopher Bulkley - Logston - Homework 2 Page</title>
+<title>CNIT133-CBL-HW02-P03</title>
 <meta charset="utf-8">
-<meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Homework 2 Page">
-
+<meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 2 Part 3">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -31,9 +32,9 @@
   </nav>
   
   <article>
-  <h4>Assignment Navigation</h4>
-     <ul>
-      <li><a href="hw02.html">Part 0 - Assignment Home Page</a></li>
+  <h4 id = top_of_page>Assignment Navigation</h4>
+    <ul>
+      <li><a href="hw02.html">Part 0 - Assignment Home Page<a/></li>
       <li><a href="hw02_part_001.html">Part 1 - Text Display</a></li>
       <li><a href="hw02_part_002.html">Part 2 - Input Boxes I</a></li>
       <li><b>Part 3 - Input Boxes II</b></li>
@@ -42,17 +43,202 @@
 
   <h4>Assignment Info</h4>
 
-Nice Text here.
+<script>
 
-  </article>
+function process()
+
+   {
+
+    var warning1,  warning2,  warning3,  warning4,  warning5, 
+        number1,   number2,   number3,   number4,   number5, 
+        n1,        n2,        n3,        n4,        n5,
+        num_array, numx,      qtyngtv,   qtypstv,   qtyzero;
+
+    warning1 = warning2 = warning3 = warning4 = warning5 = "";
+
+    number1 = document.forms["myform"].elements["num1"].value;
+    number2 = document.forms["myform"].elements["num2"].value;
+    number3 = document.forms["myform"].elements["num3"].value;
+    number4 = document.forms["myform"].elements["num4"].value;
+    number5 = document.forms["myform"].elements["num5"].value;
+
+    n1 = Number(number1);
+    n2 = Number(number2);
+    n3 = Number(number3);
+    n4 = Number(number4);
+    n5 = Number(number5);
+
+    if (isNaN(n1) || number1 == "" || 
+        isNaN(n2) || number2 == "" || 
+        isNaN(n3) || number3 == "" || 
+        isNaN(n4) || number4 == "" || 
+        isNaN(n5) || number5 == "") 
+
+        {
+
+        qtyngtv = qtypstv = qtyzero = "";
+
+        $("#qtyngtv_l").fadeTo("slow", 0.1);
+        $("#qtypstv_l").fadeTo("slow", 0.1);
+        $("#qtyzero_l").fadeTo("slow", 0.1);
+
+        $("#qtyngtv").fadeTo("slow", 0.1);
+        $("#qtypstv").fadeTo("slow", 0.1);
+        $("#qtyzero").fadeTo("slow", 0.1);
+   
+
+        if (isNaN(n1) || number1 == "") {$("#warning1").fadeTo("slow", 1);} else {$("#warning1").fadeTo("slow", 0);}
+        if (isNaN(n2) || number2 == "") {$("#warning2").fadeTo("slow", 1);} else {$("#warning2").fadeTo("slow", 0);}
+        if (isNaN(n3) || number3 == "") {$("#warning3").fadeTo("slow", 1);} else {$("#warning3").fadeTo("slow", 0);}
+        if (isNaN(n4) || number4 == "") {$("#warning4").fadeTo("slow", 1);} else {$("#warning4").fadeTo("slow", 0);}
+        if (isNaN(n5) || number5 == "") {$("#warning5").fadeTo("slow", 1);} else {$("#warning5").fadeTo("slow", 0);}
+
+        }
+                                    
+        else 
+
+        {
+
+        $("#warning1").fadeTo("slow", 0);
+        $("#warning2").fadeTo("slow", 0);
+        $("#warning3").fadeTo("slow", 0);
+        $("#warning4").fadeTo("slow", 0);
+        $("#warning5").fadeTo("slow", 0);
+
+        $("#qtyngtv_l").fadeTo("slow", 1);
+        $("#qtypstv_l").fadeTo("slow", 1);
+        $("#qtyzero_l").fadeTo("slow", 1);
+
+        $("#qtyngtv").fadeTo("slow", 1);
+        $("#qtypstv").fadeTo("slow", 1);
+        $("#qtyzero").fadeTo("slow", 1);
+
+        qtyngtv = 0;
+        qtypstv = 0;
+        qtyzero = 0;
+
+        num_array = [n1, n2, n3, n4, n5];
+
+        for (numx of num_array) 
+
+            {
+
+                  if (numx < 0) {qtyngtv += 1}
+             else if (numx > 0) {qtypstv += 1}
+                           else {qtyzero += 1};
+  
+            }
+
+         }
+
+    document.getElementById("qtyngtv").innerHTML = qtyngtv;
+    document.getElementById("qtypstv").innerHTML = qtypstv;
+    document.getElementById("qtyzero").innerHTML = qtyzero;
+
+   }
+
+function fade_and_reset()
+
+{
+        $("#warning1").fadeTo("slow", 0);
+        $("#warning2").fadeTo("slow", 0);
+        $("#warning3").fadeTo("slow", 0);
+        $("#warning4").fadeTo("slow", 0);
+        $("#warning5").fadeTo("slow", 0);
+
+        document.forms["myform"].elements["num1"].value = "";
+        document.forms["myform"].elements["num2"].value = "";
+        document.forms["myform"].elements["num3"].value = "";
+        document.forms["myform"].elements["num4"].value = "";
+        document.forms["myform"].elements["num5"].value = "";
+
+        $("#qtyngtv_l").fadeTo("slow", 0.1);
+        $("#qtypstv_l").fadeTo("slow", 0.1);
+        $("#qtyzero_l").fadeTo("slow", 0.1);
+
+        $("#qtyngtv").fadeTo("slow", 0.1);
+        $("#qtypstv").fadeTo("slow", 0.1);
+        $("#qtyzero").fadeTo("slow", 0.1);
+
+}
+
+</script>
+</head>
+
+<body>
+
+<section class="body">
+
+<form name="myform">
+
+<table style="width:100%; text-align:center; border-spacing:1em"> 
+<tr>
+<td>Input first <br> number:</td>
+<td>Input second <br> number:</td>
+<td>Input third <br> number:</td>
+<td>Input fourth <br> number:</td>
+<td>Input fifth <br> number:</td>
+</tr>
+<tr>
+<td><input type="text" id="num1" size="10" style="text-align:center"></td>
+<td><input type="text" id="num2" size="10" style="text-align:center"></td>
+<td><input type="text" id="num3" size="10" style="text-align:center"></td>
+<td><input type="text" id="num4" size="10" style="text-align:center"></td>
+<td><input type="text" id="num5" size="10" style="text-align:center"></td>
+</tr>
+<tr>
+<td><span id="warning1" style ="color: red; opacity:0">Input for first number is not numeric.</span></td>
+<td><span id="warning2" style ="color: red; opacity:0">Input for second number is not numeric.</span></td>
+<td><span id="warning3" style ="color: red; opacity:0">Input for third number is not numeric.</span></td>
+<td><span id="warning4" style ="color: red; opacity:0">Input for fourth number is not numeric.</span></td>
+<td><span id="warning5" style ="color: red; opacity:0">Input for fifth number is not numeric.</span></td>
+</tr>
+
+<tr>
+<td></td><td></td><td><input id = "click_to_process" type="button" onclick="process()" value="Process Input"></td><td></td><td></td>
+</tr>
+
+</table>
+<br>
+
+</form>
+
+
+<p>
+
+
+<table style="width:100%; text-align:center; border-spacing:1em">       
+<tr>
+<td id="qtyngtv_l" style="opacity:0.1">
+The quantity of negative <br> numbers is:<br>
+<textarea id="qtyngtv" readOnly = true rows=1 style="text-align:center"></textarea></td>
+<td id="qtypstv_l" style="opacity:0.1">
+The quantity of positive <br> numbers is:<br>
+<textarea id="qtypstv" readOnly = true rows=1 style="text-align:center"></textarea></td>
+<td id="qtyzero_l" style="opacity:0.1">
+The quantity of<br>zeros is:<br>
+<textarea id="qtyzero" readOnly = true rows=1 style="text-align:center"></textarea></td>
+</tr>
+<tr>
+<td></td><th style="width:30%"><input id ="fade_and_reset" type="button" onclick="fade_and_reset()" value="Fade / Reset"></th>
+<td></td>
+</tr>
+
+</table>
+
+</p>
+
+</article>
+
 
 </section>
 
 <footer>
 <h4>Christopher Bulkley - Logston</h4>
 <h5>San Francisco City College - Fall 2020</h5>
-<h6>Last Updated 2020 - August - 29</h6>
+<h6>Last Updated 2020 - September - 7</h6>
 </footer>
 
 </body>
+
 </html>

@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
-<title>CNIT 133 - Christopher Bulkley - Logston - Homework 2 Page</title>
+<title>CNIT133-CBL-HW02-P02</title>
 <meta charset="utf-8">
-<meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Homework 2 Page">
+<meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 2 Part 2">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -123,7 +122,6 @@ function process()
 
    }
 
-
 function fade_and_reset()
 
 {
@@ -131,9 +129,9 @@ function fade_and_reset()
         $("#warning2").fadeTo("slow", 0);
         $("#warning3").fadeTo("slow", 0);
 
-    document.forms["myform"].elements["num1"].value = "";
-    document.forms["myform"].elements["num2"].value = "";
-    document.forms["myform"].elements["num3"].value = "";
+        document.forms["myform"].elements["num1"].value = "";
+        document.forms["myform"].elements["num2"].value = "";
+        document.forms["myform"].elements["num3"].value = "";
 
         $("#sum_l").fadeTo("slow", 0.1);
         $("#avg_l").fadeTo("slow", 0.1);
@@ -149,8 +147,6 @@ function fade_and_reset()
 
 }
 
-
-
 </script>
 </head>
 
@@ -162,19 +158,19 @@ function fade_and_reset()
 
 <table style="width:100%; text-align:center; border-spacing:1em"> 
 <tr>
-<td>Input first number:</td>
-<td>Input second number:</td>
-<td>Input third number:</td>
+<td>Input first <br> number:</td>
+<td>Input second <br> number:</td>
+<td>Input third <br> number:</td>
 </tr>
 <tr>
-<td><input type="text" id="num1" size="10"></td>
-<td><input type="text" id="num2" size="10"></td>
-<td><input type="text" id="num3" size="10"></td>
+<td style="width:30%"><input type="text" id="num1" size="10" style="text-align:center"></td>
+<td style="width:30%"><input type="text" id="num2" size="10" style="text-align:center"></td>
+<td style="width:30%"><input type="text" id="num3" size="10" style="text-align:center"></td>
 </tr>
 <tr>
-<td><span id="warning1" style ="color: red; opacity:0">Input for first number is not numeric.</span></td>
-<td><span id="warning2" style ="color: red; opacity:0">Input for second number is not numeric.</span></td>
-<td><span id="warning3" style ="color: red; opacity:0">Input for third number is not numeric.</span></td>
+<td><span id="warning1" style ="color: red; opacity:0">Input for first number <br> is not numeric.</span></td>
+<td><span id="warning2" style ="color: red; opacity:0">Input for second number <br> is not numeric.</span></td>
+<td><span id="warning3" style ="color: red; opacity:0">Input for third number is <br> not numeric.</span></td>
 </tr>
 
 <tr>
@@ -192,17 +188,27 @@ function fade_and_reset()
 
 <table style="width:100%; text-align:center; border-spacing:1em">       
 <tr>
-<td id="sum_l" style="opacity:0.1">The sum of the three numbers is<br><textarea id="sum" readOnly = true></textarea></td>
-<td></td>
-<td id="minn_l" style="opacity:0.1">The minimum of the three numbers is<br><textarea id="minn" readOnly = true></textarea></td>
+<td id="sum_l" style="opacity:0.1; width:30%">
+The sum of the <br> three numbers is:<br>
+<textarea id="sum" readOnly = true style="text-align:center" rows=1></textarea></td>
+<td id="avg_l" style="opacity:0.1; width:30%">
+The average of the <br> three numbers is:<br>
+<textarea id="avg"  readOnly = true style="text-align:center" rows=1></textarea></td>
+<td id="prd_l" style="opacity:0.1; width:30%">
+The product of the <br> three numbers is:<br>
+<textarea id="prd"  readOnly = true style="text-align:center" rows=1></textarea></td>
 </tr>
 <tr>
-<td id="avg_l" style="opacity:0.1">The average of the three numbers is<br><textarea id="avg"  readOnly = true></textarea></td>
+<td id="minn_l" style="opacity:0.1; width:30%">
+The minimum of the <br> three numbers is:<br>
+<textarea id="minn" readOnly = true style="text-align:center" rows=1></textarea></td>
 <td></td>
-<td id="maxx_l" style="opacity:0.1">The maximum of the three numbers is<br><textarea id="maxx" readOnly = true></textarea></td>
+<td id="maxx_l" style="opacity:0.1; width:30%">
+The maximum of the <br> three numbers is:<br>
+<textarea id="maxx" readOnly = true style="text-align:center" rows=1></textarea></td>
 </tr>
 <tr>
-<td id="prd_l" style="opacity:0.1">The product of the three numbers is<br><textarea id="prd"  readOnly = true></textarea></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
