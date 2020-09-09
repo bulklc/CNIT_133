@@ -24,10 +24,35 @@
 
 .tg .tg-l2oz{font-weight:bold;text-align:center;vertical-align:top;}
 
+input:focus {
+  background-color: yellow;
+}
+
+#panel, #flip {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #000000;
+}
+
+#panel {
+  padding: 50px;
+  display: none;
+}
+
+
 </style>
 
 </head>
 <body>
+
+<script> 
+$(document).ready(function(){
+  $("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+  });
+});
+</script>
 
 <section>
 
@@ -60,8 +85,47 @@
 
   <h4>Assignment Info</h4>
 
+<div id="flip" style="width:450px">Click to Show/Hide Instructions</div>
+<div id="panel" style="width:450px">
+The following foreign exchange rates are from July 2019.<br><br>
+<table id = "instructions_table" class="tg" style="margin: auto">
+  <tr>
+    <td class="tg-1wig">Currency</td>
+    <td class="tg-l2oz">Rate</td>
+    <td class="tg-l2oz">Symbol</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">British Pound</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">&#163;</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Canadian Dollar</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">C$</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Euro</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">&#8364;</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Japanese Yen</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">&#165;</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Mexican Peso</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">&#8369;</td>
+  </tr>
+</table>
+<br>Enter a dollar amount in the table below to see the corresponding foreign exchange values.<br><br>To display results, either a) press enter or b) click outside of the input box.</div><br>
 
-<table id = "results_table" class="tg" style="table-layout: fixed; width: 400px">
+
+
+
+<table id = "results_table" class="tg" style="table-layout: fixed; width: 450px">
 <thead>
   <tr>
     <th class="tg-0lac" colspan="4"><span style="font-weight:bold">Monetary Exchange Rates</span></th>
@@ -71,45 +135,46 @@
   <tr>
     <td class="tg-1wig">Currency</td>
     <td class="tg-l2oz">Rate</td>
-    <td class="tg-l2oz">Value</td>
     <td class="tg-l2oz">Symbol</td>
+    <td class="tg-l2oz">Value</td>
   </tr>
   <tr>
     <td class="tg-0lax">British Pound</td>
     <td class="tg-lqy6"></td>
-    <td class="tg-lqy6"></td>
     <td class="tg-baqh">&#163;</td>
+    <td class="tg-lqy6"></td>
   </tr>
   <tr>
     <td class="tg-0lax">Canadian Dollar</td>
     <td class="tg-lqy6"></td>
-    <td class="tg-lqy6"></td>
     <td class="tg-baqh">C$</td>
+    <td class="tg-lqy6"></td>
   </tr>
   <tr>
     <td class="tg-0lax">Euro</td>
-    <td class="tg-lqy6">0.89</td>
     <td class="tg-lqy6"></td>
     <td class="tg-baqh">&#8364;</td>
+    <td class="tg-lqy6"></td>
   </tr>
   <tr>
     <td class="tg-0lax">Japanese Yen</td>
-    <td class="tg-lqy6">108.38</td>
     <td class="tg-lqy6"></td>
     <td class="tg-baqh">&#165;</td>
+    <td class="tg-lqy6"></td>
   </tr>
   <tr>
-    <td class="tg-0lax"><span style="font-weight:400;font-style:normal">Mexican Peso</span></td>
-    <td class="tg-lqy6">19.11</td>
+    <td class="tg-0lax">Mexican Peso</td>
     <td class="tg-lqy6"></td>
     <td class="tg-baqh">&#8369;</td>
+    <td class="tg-lqy6"></td>
   </tr>
   <tr>
     <td class="tg-0lax" colspan="2"><span style="font-weight:bold;font-style:normal">Enter Amount of U.S. Dollars:</span></td>
+    <td class="tg-baqh">$</td>
     <td class="tg-lqy6"><form name="myform" onSubmit="return false;">
         <input type="text" id="usa_dlr_ipt" size="8" style="text-align:center" onfocusout="convert_rates()" 
          onkeypress= "if(event.keyCode === 13) convert_rates()"></form></td>
-    <td class="tg-baqh">$</td>
+
   </tr>
 </tbody>
 </table>
@@ -144,12 +209,18 @@ document.getElementById("results_table").rows[5].cells[1].innerHTML = jpn_yen_ex
 document.getElementById("results_table").rows[6].cells[1].innerHTML = mex_pso_ex;
 
 
+document.getElementById("instructions_table").rows[1].cells[1].innerHTML = brt_pnd_ex;
+document.getElementById("instructions_table").rows[2].cells[1].innerHTML = can_dlr_ex;
+document.getElementById("instructions_table").rows[3].cells[1].innerHTML = euro____ex;
+document.getElementById("instructions_table").rows[4].cells[1].innerHTML = jpn_yen_ex;
+document.getElementById("instructions_table").rows[5].cells[1].innerHTML = mex_pso_ex;
+
 
 function convert_rates() 
 
     {
 
-     var usa_dlr_ipt = document.forms["myform"].elements["usa_dlr_ipt"].value
+     var usa_dlr_ipt = Number(document.forms["myform"].elements["usa_dlr_ipt"].value);
 
      if (isNaN(usa_dlr_ipt)) 
          
@@ -157,25 +228,40 @@ function convert_rates()
 
           $("#warning").fadeTo("slow", 1);
  
-          document.getElementById("results_table").rows[2].cells[2].innerHTML = "";
-          document.getElementById("results_table").rows[3].cells[2].innerHTML = "";
-          document.getElementById("results_table").rows[4].cells[2].innerHTML = "";
-          document.getElementById("results_table").rows[5].cells[2].innerHTML = "";
-          document.getElementById("results_table").rows[6].cells[2].innerHTML = "";
+          document.getElementById("results_table").rows[2].cells[3].innerHTML = "";
+          document.getElementById("results_table").rows[3].cells[3].innerHTML = "";
+          document.getElementById("results_table").rows[4].cells[3].innerHTML = "";
+          document.getElementById("results_table").rows[5].cells[3].innerHTML = "";
+          document.getElementById("results_table").rows[6].cells[3].innerHTML = "";
 
          }
 
-     else
+     else if (usa_dlr_ipt == 0) 
 
          {
 
           $("#warning").fadeTo("slow", 0);
 
-          document.getElementById("results_table").rows[2].cells[2].innerHTML = (usa_dlr_ipt*brt_pnd_ex).toFixed(2);
-          document.getElementById("results_table").rows[3].cells[2].innerHTML = (usa_dlr_ipt*can_dlr_ex).toFixed(2);
-          document.getElementById("results_table").rows[4].cells[2].innerHTML = (usa_dlr_ipt*euro____ex).toFixed(2);
-          document.getElementById("results_table").rows[5].cells[2].innerHTML = (usa_dlr_ipt*jpn_yen_ex).toFixed(2);
-          document.getElementById("results_table").rows[6].cells[2].innerHTML = (usa_dlr_ipt*mex_pso_ex).toFixed(2);
+          document.getElementById("results_table").rows[2].cells[3].innerHTML = "";
+          document.getElementById("results_table").rows[3].cells[3].innerHTML = "";
+          document.getElementById("results_table").rows[4].cells[3].innerHTML = "";
+          document.getElementById("results_table").rows[5].cells[3].innerHTML = "";
+          document.getElementById("results_table").rows[6].cells[3].innerHTML = "";
+
+         }
+
+
+     else 
+
+         {
+
+          $("#warning").fadeTo("slow", 0);
+
+          document.getElementById("results_table").rows[2].cells[3].innerHTML = (usa_dlr_ipt*brt_pnd_ex).toFixed(2);
+          document.getElementById("results_table").rows[3].cells[3].innerHTML = (usa_dlr_ipt*can_dlr_ex).toFixed(2);
+          document.getElementById("results_table").rows[4].cells[3].innerHTML = (usa_dlr_ipt*euro____ex).toFixed(2);
+          document.getElementById("results_table").rows[5].cells[3].innerHTML = (usa_dlr_ipt*jpn_yen_ex).toFixed(2);
+          document.getElementById("results_table").rows[6].cells[3].innerHTML = (usa_dlr_ipt*mex_pso_ex).toFixed(2);
 
          }
      
