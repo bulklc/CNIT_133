@@ -7,6 +7,24 @@
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 2 Part 4">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+.tg .tg-0lac{text-align:center;vertical-align:top}
+
+.tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+.tg .tg-lqy6{text-align:right;vertical-align:top}
+
+.tg .tg-l2oz{font-weight:bold;text-align:center;vertical-align:top}
+
+</style>
 
 </head>
 <body>
@@ -42,7 +60,61 @@
 
   <h4>Assignment Info</h4>
 
-Extra credit not attempted as of date last updated.
+
+<table id = "results_table" class="tg">
+<thead>
+  <tr>
+    <th class="tg-0lac" colspan="4"><span style="font-weight:bold">Monetary Exchange Rates</span></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-1wig">Currency</td>
+    <td class="tg-l2oz" width="20%">Rate</td>
+    <td class="tg-l2oz" width="20%">Value</td>
+    <td class="tg-l2oz" width="20%">Symbol</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">British Pound</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">&#163</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Canadian Dollar</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">C$</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Euro</td>
+    <td class="tg-lqy6">0.89</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">&#8364</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Japanese Yen</td>
+    <td class="tg-lqy6">108.38</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">&#165</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"><span style="font-weight:400;font-style:normal">Mexican Peso</span></td>
+    <td class="tg-lqy6">19.11</td>
+    <td class="tg-lqy6"></td>
+    <td class="tg-baqh">&#8369</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax" colspan="2"><span style="font-weight:bold;font-style:normal">Enter Amount of U.S. Dollars:</span></td>
+    <td class="tg-lqy6"><form name="myform" onSubmit="return false;">
+        <input type="text" id="usa_dlr_ipt" size="8" style="text-align:center" onfocusout="convert_rates()" 
+         onkeypress= "if(event.keyCode === 13) convert_rates()"></td></form>   
+    <td class="tg-baqh">$</td>
+  </tr>
+</tbody>
+</table>
+
+<span id="warning" style ="color: red; opacity:0"><br>Input for dollar amount is not numeric.<br></span>
 
   </article>
 
@@ -51,8 +123,66 @@ Extra credit not attempted as of date last updated.
 <footer>
 <h4>Christopher Bulkley - Logston</h4>
 <h5>San Francisco City College - Fall 2020</h5>
-<h6>Last Updated 2020 - September - 7</h6>
+<h6>Last Updated 2020 - September - 8</h6>
 </footer>
 
 </body>
+
+<script>
+
+var usa_dlr_ipt;
+var brt_pnd_ex = 0.82;
+var can_dlr_ex = 1.31;
+var euro____ex = 0.89;
+var jpn_yen_ex = 108.38;
+var mex_pso_ex = 19.11;
+
+document.getElementById("results_table").rows[2].cells[1].innerHTML = brt_pnd_ex;
+document.getElementById("results_table").rows[3].cells[1].innerHTML = can_dlr_ex;
+document.getElementById("results_table").rows[4].cells[1].innerHTML = euro____ex;
+document.getElementById("results_table").rows[5].cells[1].innerHTML = jpn_yen_ex;
+document.getElementById("results_table").rows[6].cells[1].innerHTML = mex_pso_ex;
+
+
+
+function convert_rates() 
+
+    {
+
+     var usa_dlr_ipt = document.forms["myform"].elements["usa_dlr_ipt"].value
+
+     if (isNaN(usa_dlr_ipt)) 
+         
+         {
+
+          $("#warning").fadeTo("slow", 1);
+ 
+          document.getElementById("results_table").rows[2].cells[2].innerHTML = "";
+          document.getElementById("results_table").rows[3].cells[2].innerHTML = "";
+          document.getElementById("results_table").rows[4].cells[2].innerHTML = "";
+          document.getElementById("results_table").rows[5].cells[2].innerHTML = "";
+          document.getElementById("results_table").rows[6].cells[2].innerHTML = "";
+
+         }
+
+     else
+
+         {
+
+          $("#warning").fadeTo("slow", 0);
+
+          document.getElementById("results_table").rows[2].cells[2].innerHTML = (usa_dlr_ipt*brt_pnd_ex).toFixed(2);
+          document.getElementById("results_table").rows[3].cells[2].innerHTML = (usa_dlr_ipt*can_dlr_ex).toFixed(2);
+          document.getElementById("results_table").rows[4].cells[2].innerHTML = (usa_dlr_ipt*euro____ex).toFixed(2);
+          document.getElementById("results_table").rows[5].cells[2].innerHTML = (usa_dlr_ipt*jpn_yen_ex).toFixed(2);
+          document.getElementById("results_table").rows[6].cells[2].innerHTML = (usa_dlr_ipt*mex_pso_ex).toFixed(2);
+
+         }
+     
+
+    }
+
+</script>
+
+
 </html>
