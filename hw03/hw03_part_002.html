@@ -33,20 +33,157 @@
   <h4>Assignment Navigation</h4>
     <ul>
       <li><a href="hw03.html">Part 0 - Assignment Home Page</a></li>
-      <li><a href="hw03_part_002.html">Part 1 - Student Grades</a></li>
+      <li><a href="hw03_part_001.html">Part 1 - Student Grades</a></li>
       <li><b>Part 2 - Commissions</b></li>
       <li><a href="hw03_part_003.html">Part 3 - Fahrenheit / Celsius</a></li>
       <li><a href="hw03_part_004.html">Part 4 - Extra Credit</a></li>
     </ul>
 
-  <h4>Assignment Info</h4>
+  <h4>Student Grades</h4>
 
-aaa
+<script>
+
+  function process()
+
+   {
+
+    var warning1, warning2, warning3, number1, number2, number3, n1, n2, n3, sum, avg, prd, minn, maxx;
+
+    warning1 = warning2 = warning3 = "";
+
+    number1 = document.forms["myform"].elements["num1"].value;
+    number2 = document.forms["myform"].elements["num2"].value;
+    number3 = document.forms["myform"].elements["num3"].value;
+
+    n1 = Number(number1);
+    n2 = Number(number2);
+    n3 = Number(number3);
+
+    if (isNaN(n1) || number1 == "" || isNaN(n2) || number2 == "" || isNaN (n3) || number3 == "") 
+
+        {
+
+        sum = avg = prd = minn = maxx = "";
+
+        $("#sum_l").fadeTo("slow", 0.1);
+        $("#avg_l").fadeTo("slow", 0.1);
+        $("#prd_l").fadeTo("slow", 0.1);
+        $("#minn_l").fadeTo("slow", 0.1);
+        $("#maxx_l").fadeTo("slow", 0.1);
+
+        $("#sum").fadeTo("slow", 0.1);
+        $("#avg").fadeTo("slow", 0.1);
+        $("#prd").fadeTo("slow", 0.1);
+        $("#minn").fadeTo("slow", 0.1);
+        $("#maxx").fadeTo("slow", 0.1);
+   
+
+        if (isNaN(n1) || number1 == "") {$("#warning1").fadeTo("slow", 1);} else {$("#warning1").fadeTo("slow", 0);}
+        if (isNaN(n2) || number2 == "") {$("#warning2").fadeTo("slow", 1);} else {$("#warning2").fadeTo("slow", 0);}
+        if (isNaN(n3) || number3 == "") {$("#warning3").fadeTo("slow", 1);} else {$("#warning3").fadeTo("slow", 0);}
+
+        }
+                                    
+        else 
+
+        {
+
+        $("#warning1").fadeTo("slow", 0);
+        $("#warning2").fadeTo("slow", 0);
+        $("#warning3").fadeTo("slow", 0);
+
+        $("#sum_l").fadeTo("slow", 1);
+        $("#avg_l").fadeTo("slow", 1);
+        $("#prd_l").fadeTo("slow", 1);
+        $("#minn_l").fadeTo("slow", 1);
+        $("#maxx_l").fadeTo("slow", 1);
+
+        $("#sum").fadeTo("slow", 1);
+        $("#avg").fadeTo("slow", 1);
+        $("#prd").fadeTo("slow", 1);
+        $("#minn").fadeTo("slow", 1);
+        $("#maxx").fadeTo("slow", 1);
+
+        sum = n1 + n2 + n3;
+        avg = sum / 3;
+        prd = n1 * n2 * n3;
+        minn = Math.min(n1, n2, n3);
+        maxx = Math.max(n1, n2, n3);
+
+        }
+
+    document.getElementById("sum").innerHTML = sum;
+    document.getElementById("avg").innerHTML = avg;
+    document.getElementById("prd").innerHTML = prd;
+    document.getElementById("minn").innerHTML = minn;
+    document.getElementById("maxx").innerHTML = maxx;
+
+   }
 
 
+</script>
 
+<form name="myform">
 
-  </article>
+<table style="width:100%; text-align:center; border-spacing:1em"> 
+<tr>
+<td>Input first <br> number:</td>
+<td>Input second <br> number:</td>
+<td>Input third <br> number:</td>
+</tr>
+<tr>
+<td style="width:30%"><input type="text" id="num1" size="10" style="text-align:center"></td>
+<td style="width:30%"><input type="text" id="num2" size="10" style="text-align:center"></td>
+<td style="width:30%"><input type="text" id="num3" size="10" style="text-align:center"></td>
+</tr>
+<tr>
+<td><span id="warning1" style ="color: red; opacity:0">Input for first number <br> is not numeric.</span></td>
+<td><span id="warning2" style ="color: red; opacity:0">Input for second number <br> is not numeric.</span></td>
+<td><span id="warning3" style ="color: red; opacity:0">Input for third number is <br> not numeric.</span></td>
+</tr>
+
+<tr>
+<td></td><td><input id = "click_to_process" type="button" onclick="process()" value="Process Input"></td><td></td>
+</tr>
+
+</table>
+
+</form>
+
+<table style="width:100%; text-align:center; border-spacing:1em">       
+<tr>
+<td id="sum_l" style="opacity:0.1; width:30%">
+The sum of the <br> three numbers is:<br>
+<textarea id="sum" readonly style="text-align:center" rows=1></textarea></td>
+<td id="avg_l" style="opacity:0.1; width:30%">
+The average of the <br> three numbers is:<br>
+<textarea id="avg"  readonly style="text-align:center" rows=1></textarea></td>
+<td id="prd_l" style="opacity:0.1; width:30%">
+The product of the <br> three numbers is:<br>
+<textarea id="prd"  readonly style="text-align:center" rows=1></textarea></td>
+</tr>
+<tr>
+<td id="minn_l" style="opacity:0.1; width:30%">
+The minimum of the <br> three numbers is:<br>
+<textarea id="minn" readonly style="text-align:center" rows=1></textarea></td>
+<td></td>
+<td id="maxx_l" style="opacity:0.1; width:30%">
+The maximum of the <br> three numbers is:<br>
+<textarea id="maxx" readonly style="text-align:center" rows=1></textarea></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td><td><input id ="fade_and_reset" type="button" onclick="fade_and_reset()" value="Fade / Reset"></td>
+<td></td>
+</tr>
+
+</table>
+
+</article>
 
 
 
