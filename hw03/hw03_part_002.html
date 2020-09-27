@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="../scripts/misc_functions.js"></script>
+<script src="../scripts/misc_functions.js"></script>
 
 
 
@@ -149,7 +149,7 @@ function process()
 
         document.getElementById("total_sales").value = "";
         document.getElementById("total_commission").value = "";
-        document.getElementById("earning_statement").innerHTML ="<br>";   
+        document.getElementById("earning_statement").innerHTML ="<br><br>";   
 
 
         if (Number.isInteger(i1_qty_n) == false || i1_qty_n < 0)
@@ -311,7 +311,7 @@ function fade_and_reset()
 
         document.getElementById("total_sales").value = "";
         document.getElementById("total_commission").value = "";
-        document.getElementById("earning_statement").innerHTML ="";  
+        document.getElementById("earning_statement").innerHTML ="<br><br>";   
 
 }
 
@@ -324,20 +324,24 @@ function fade_and_reset()
 <tr>
 <td colspan="4" style="text-align:left"><b>Input the full name of the salesperson:</b></td>
 </tr>
-<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4">&nbsp;</td>
+</tr>
 <tr>
 <td colspan="4"><input type="text" id="sp_name_f" size="50" style="text-align:left"></td>
 </tr>
 <tr>
-<td colspan="4" style="text-align:left"><span id="warning5" style ="color: red; opacity:0">&nbsp Enter name for salesperson.</span></td>
+<td colspan="4" style="text-align:left"><span id="warning5" style ="color: red; opacity:0">Enter name for salesperson.</span></td>
 </tr>
-</tr>
-<tr><td>&nbsp</td></tr>
 <tr>
+<td colspan="4">&nbsp;</td>
+</tr>
 <tr>
 <td colspan="4" style="text-align:left"><b>Input the quantity of items sold for each item number:</b></td>
 </tr>
-<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4">&nbsp;</td>
+</tr>
 <tr>
 <td>Item 1:</td><td><input type="text" id="i1_qty_f" size="10"></td><td colspan="2" style="text-align:left"><span id="warning1" style ="color: red; opacity:0"> Not a non-negative integer.</span></td>
 </tr>
@@ -350,16 +354,22 @@ function fade_and_reset()
 <tr>
 <td>Item 4:</td><td><input type="text" id="i4_qty_f" size="10"></td><td colspan="2" style="text-align:left"><span id="warning4" style ="color: red; opacity:0"> Not a non-negative integer.</span></td>
 </tr>
-<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4">&nbsp;</td>
+</tr>
 <tr>
 <td></td><td><input type="button" onclick="process()" value="Process Input"></td>
 <td><input type="button" onclick="fade_and_reset()" value="Fade / Reset"></td><td></td>
 </tr>
-<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4">&nbsp;</td>
+</tr>
 <tr>
 <td colspan="4" style="text-align:left"><b>Processed Information Below:</b></td>
 </tr>
-<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4">&nbsp;</td>
+</tr>
 <tr>
 <td id="item_no_l" style="opacity:0.1">Item #</td>
 <td id="price_l"   style="opacity:0.1">Price</td>
@@ -390,17 +400,20 @@ function fade_and_reset()
 <td><input readOnly type="text" id="i4_qty_out" size="10" style="opacity:0.1"></td>
 <td><input readOnly type="text" id="i4_amount" size="15" style="opacity:0.1"></td>
 </tr>
-<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4">&nbsp;</td>
+</tr>
 <tr>
 <td id="total_sales_l" colspan="3" style="opacity:0.1; text-align:right">Total Amount Sold:</td><td><input readOnly type="text" id="total_sales" size="15" style="opacity:0.1"></td>
 </tr>
 <tr>
 <td id="total_commission_l" colspan="3" style="opacity:0.1; text-align:right">Total Weekly Earnings:</td><td><input readOnly type="text" id="total_commission" size="15" style="opacity:0.1"></td>
 </tr>
-</tr>
-<tr><td>&nbsp</td></tr>
 <tr>
-<td colspan="4"><span id="earning_statement"><br></span></td>
+<td colspan="4">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="4"><span id="earning_statement"><br><br></span></td>
 </tr>
 </table>
 </form>
