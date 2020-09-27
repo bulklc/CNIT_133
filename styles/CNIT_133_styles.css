@@ -1,3 +1,8 @@
+
+html {
+    width: 100vw;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -55,6 +60,11 @@ footer {
   text-align: center;
   color: white;
 
+}
+
+input[type="text"]
+{
+     font-family: monospace;
 }
 
 /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */

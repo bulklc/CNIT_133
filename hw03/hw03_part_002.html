@@ -7,6 +7,17 @@
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 3 Part 2">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="../scripts/misc_functions.js"></script>
+
+
+
+<style> 
+input {
+    text-align:right;
+}
+</style>
+
 </head>
 <body>
 
@@ -39,48 +50,128 @@
       <li><a href="hw03_part_004.html">Part 4 - Extra Credit</a></li>
     </ul>
 
-  <h4>Student Grades</h4>
+  <h4>Sales Commissions</h4>
 
 <script>
 
-  function process()
+
+function th_sep(num)
+  {
+    var num_parts = num.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts.join(".");
+  }
+
+function process()
 
    {
 
-    var warning1, warning2, warning3, number1, number2, number3, n1, n2, n3, sum, avg, prd, minn, maxx;
+    var i1_qty,      i2_qty,      i3_qty,      i4_qty,     sp_name,
+        i1_qty_n,    i2_qty_n,    i3_qty_n,    i4_qty_n,  
+        i1_amount,   i2_amount,   i3_amount,   i4_amount, 
+        total_sales, total_commission, earning_statement;
 
-    warning1 = warning2 = warning3 = "";
+    var i1_price = 239.99;
+    var i2_price = 129.75;
+    var i3_price =  99.95;
+    var i4_price = 350.89;
 
-    number1 = document.forms["myform"].elements["num1"].value;
-    number2 = document.forms["myform"].elements["num2"].value;
-    number3 = document.forms["myform"].elements["num3"].value;
+    i1_qty = document.forms["myform"].elements["i1_qty_f"].value;
+    i2_qty = document.forms["myform"].elements["i2_qty_f"].value;
+    i3_qty = document.forms["myform"].elements["i3_qty_f"].value;
+    i4_qty = document.forms["myform"].elements["i4_qty_f"].value;
+    sp_name = document.forms["myform"].elements["sp_name_f"].value;
 
-    n1 = Number(number1);
-    n2 = Number(number2);
-    n3 = Number(number3);
+    if (i1_qty == "") {i1_qty = 0;}
+    if (i2_qty == "") {i2_qty = 0;}
+    if (i3_qty == "") {i3_qty = 0;}
+    if (i4_qty == "") {i4_qty = 0;}
 
-    if (isNaN(n1) || number1 == "" || isNaN(n2) || number2 == "" || isNaN (n3) || number3 == "") 
+    i1_qty_n = Number(i1_qty);
+    i2_qty_n = Number(i2_qty);
+    i3_qty_n = Number(i3_qty);
+    i4_qty_n = Number(i4_qty);
+
+    if (Number.isInteger(i1_qty_n) == false || i1_qty_n < 0 ||
+        Number.isInteger(i2_qty_n) == false || i2_qty_n < 0 || 
+        Number.isInteger(i3_qty_n) == false || i3_qty_n < 0 || 
+        Number.isInteger(i4_qty_n) == false || i4_qty_n < 0 || sp_name == "") 
 
         {
 
-        sum = avg = prd = minn = maxx = "";
+        i1_amount = i2_amount = i3_amount = i4_amount = total_sales = total_commission = earning_statement = "";
 
-        $("#sum_l").fadeTo("slow", 0.1);
-        $("#avg_l").fadeTo("slow", 0.1);
-        $("#prd_l").fadeTo("slow", 0.1);
-        $("#minn_l").fadeTo("slow", 0.1);
-        $("#maxx_l").fadeTo("slow", 0.1);
+        $("#i1_price").fadeTo("slow", 0.1);
+        $("#i2_price").fadeTo("slow", 0.1);
+        $("#i3_price").fadeTo("slow", 0.1);
+        $("#i4_price").fadeTo("slow", 0.1);
 
-        $("#sum").fadeTo("slow", 0.1);
-        $("#avg").fadeTo("slow", 0.1);
-        $("#prd").fadeTo("slow", 0.1);
-        $("#minn").fadeTo("slow", 0.1);
-        $("#maxx").fadeTo("slow", 0.1);
-   
+        $("#i1_qty_out").fadeTo("slow", 0.1);
+        $("#i2_qty_out").fadeTo("slow", 0.1);
+        $("#i3_qty_out").fadeTo("slow", 0.1);
+        $("#i4_qty_out").fadeTo("slow", 0.1);
 
-        if (isNaN(n1) || number1 == "") {$("#warning1").fadeTo("slow", 1);} else {$("#warning1").fadeTo("slow", 0);}
-        if (isNaN(n2) || number2 == "") {$("#warning2").fadeTo("slow", 1);} else {$("#warning2").fadeTo("slow", 0);}
-        if (isNaN(n3) || number3 == "") {$("#warning3").fadeTo("slow", 1);} else {$("#warning3").fadeTo("slow", 0);}
+        $("#i1_amount").fadeTo("slow", 0.1);
+        $("#i2_amount").fadeTo("slow", 0.1);
+        $("#i3_amount").fadeTo("slow", 0.1);
+        $("#i4_amount").fadeTo("slow", 0.1);
+
+        $("#i1_cell_num").fadeTo("slow", 0.1);
+        $("#i2_cell_num").fadeTo("slow", 0.1);
+        $("#i3_cell_num").fadeTo("slow", 0.1);
+        $("#i4_cell_num").fadeTo("slow", 0.1);
+
+        $("#item_no_l").fadeTo("slow", 0.1);
+        $("#price_l").fadeTo("slow", 0.1);
+        $("#qty_l").fadeTo("slow", 0.1);
+        $("#qty_total_l").fadeTo("slow", 0.1);
+
+        $("#total_sales").fadeTo("slow", 0.1);
+        $("#total_commission").fadeTo("slow", 0.1);
+
+        $("#total_sales_l").fadeTo("slow", 0.1);
+        $("#total_commission_l").fadeTo("slow", 0.1);
+
+        document.getElementById("i1_price").value = "";
+        document.getElementById("i2_price").value = "";
+        document.getElementById("i3_price").value = "";
+        document.getElementById("i4_price").value = "";
+
+        document.getElementById("i1_qty_out").value = "";
+        document.getElementById("i2_qty_out").value = "";
+        document.getElementById("i3_qty_out").value = "";
+        document.getElementById("i4_qty_out").value = "";
+
+        document.getElementById("i1_amount").value = "";
+        document.getElementById("i2_amount").value = "";
+        document.getElementById("i3_amount").value = "";
+        document.getElementById("i4_amount").value = "";
+
+        document.getElementById("total_sales").value = "";
+        document.getElementById("total_commission").value = "";
+        document.getElementById("earning_statement").innerHTML ="<br>";   
+
+
+        if (Number.isInteger(i1_qty_n) == false || i1_qty_n < 0)
+                {$("#warning1").fadeTo("slow", 1);} 
+           else 
+                {$("#warning1").fadeTo("slow", 0);}
+        if (Number.isInteger(i2_qty_n) == false || i2_qty_n < 0) 
+                {$("#warning2").fadeTo("slow", 1);} 
+           else 
+                {$("#warning2").fadeTo("slow", 0);}
+        if (Number.isInteger(i3_qty_n) == false || i3_qty_n < 0)
+                {$("#warning3").fadeTo("slow", 1);} 
+           else 
+                {$("#warning3").fadeTo("slow", 0);}
+        if (Number.isInteger(i4_qty_n) == false || i4_qty_n < 0)
+                {$("#warning4").fadeTo("slow", 1);}
+           else 
+                {$("#warning4").fadeTo("slow", 0);}
+        if (sp_name == "")
+                {$("#warning5").fadeTo("slow", 1);}
+           else 
+                {$("#warning5").fadeTo("slow", 0);}
 
         }
                                     
@@ -91,103 +182,230 @@
         $("#warning1").fadeTo("slow", 0);
         $("#warning2").fadeTo("slow", 0);
         $("#warning3").fadeTo("slow", 0);
+        $("#warning4").fadeTo("slow", 0);
+        $("#warning5").fadeTo("slow", 0);
 
-        $("#sum_l").fadeTo("slow", 1);
-        $("#avg_l").fadeTo("slow", 1);
-        $("#prd_l").fadeTo("slow", 1);
-        $("#minn_l").fadeTo("slow", 1);
-        $("#maxx_l").fadeTo("slow", 1);
+        $("#i1_price").fadeTo("slow", 1);
+        $("#i2_price").fadeTo("slow", 1);
+        $("#i3_price").fadeTo("slow", 1);
+        $("#i4_price").fadeTo("slow", 1);
 
-        $("#sum").fadeTo("slow", 1);
-        $("#avg").fadeTo("slow", 1);
-        $("#prd").fadeTo("slow", 1);
-        $("#minn").fadeTo("slow", 1);
-        $("#maxx").fadeTo("slow", 1);
+        $("#i1_qty_out").fadeTo("slow", 1);
+        $("#i2_qty_out").fadeTo("slow", 1);
+        $("#i3_qty_out").fadeTo("slow", 1);
+        $("#i4_qty_out").fadeTo("slow", 1);
 
-        sum = n1 + n2 + n3;
-        avg = sum / 3;
-        prd = n1 * n2 * n3;
-        minn = Math.min(n1, n2, n3);
-        maxx = Math.max(n1, n2, n3);
+        $("#i1_amount").fadeTo("slow", 1);
+        $("#i2_amount").fadeTo("slow", 1);
+        $("#i3_amount").fadeTo("slow", 1);
+        $("#i4_amount").fadeTo("slow", 1);
+
+        $("#i1_cell_num").fadeTo("slow", 1);
+        $("#i2_cell_num").fadeTo("slow", 1);
+        $("#i3_cell_num").fadeTo("slow", 1);
+        $("#i4_cell_num").fadeTo("slow", 1);
+
+        $("#item_no_l").fadeTo("slow", 1);
+        $("#price_l").fadeTo("slow", 1);
+        $("#qty_l").fadeTo("slow", 1);
+        $("#qty_total_l").fadeTo("slow", 1);
+
+        $("#total_sales").fadeTo("slow", 1);
+        $("#total_commission").fadeTo("slow", 1);
+        $("#total_sales_l").fadeTo("slow", 1);
+        $("#total_commission_l").fadeTo("slow", 1);
+
+        i1_amount = (i1_price*i1_qty_n).toFixed(2);
+        i2_amount = (i2_price*i2_qty_n).toFixed(2);
+        i3_amount = (i3_price*i3_qty_n).toFixed(2);
+        i4_amount = (i4_price*i4_qty_n).toFixed(2);
+
+        total_sales = (Number(i1_amount) + Number(i2_amount) + Number(i3_amount) + Number(i4_amount)).toFixed(2);        
+        total_commission = (total_sales*0.09 + 250).toFixed(2);
+
+        document.getElementById("i1_price").value = frmt_accntg_usd(i1_price, 10);
+        document.getElementById("i2_price").value = frmt_accntg_usd(i2_price, 10);
+        document.getElementById("i3_price").value = frmt_accntg_usd(i3_price, 10);
+        document.getElementById("i4_price").value = frmt_accntg_usd(i4_price, 10);
+
+        document.getElementById("i1_qty_out").value = thsnd_sep(i1_qty_n);
+        document.getElementById("i2_qty_out").value = thsnd_sep(i2_qty_n);
+        document.getElementById("i3_qty_out").value = thsnd_sep(i3_qty_n);
+        document.getElementById("i4_qty_out").value = thsnd_sep(i4_qty_n);
+
+        document.getElementById("i1_amount").value = frmt_accntg_usd(i1_amount, 15);
+        document.getElementById("i2_amount").value = frmt_accntg_usd(i2_amount, 15);
+        document.getElementById("i3_amount").value = frmt_accntg_usd(i3_amount, 15);
+        document.getElementById("i4_amount").value = frmt_accntg_usd(i4_amount, 15);
+
+        document.getElementById("total_sales").value = frmt_accntg_usd(total_sales, 15);
+        document.getElementById("total_commission").value = frmt_accntg_usd(total_commission, 15);
+        document.getElementById("earning_statement").innerHTML = sp_name + " earned<br>" + frmt_crrncy_usd(total_commission) + " in commissions.";
+
 
         }
 
-    document.getElementById("sum").innerHTML = sum;
-    document.getElementById("avg").innerHTML = avg;
-    document.getElementById("prd").innerHTML = prd;
-    document.getElementById("minn").innerHTML = minn;
-    document.getElementById("maxx").innerHTML = maxx;
-
    }
+
+function fade_and_reset()
+
+{
+
+        $("#warning1").fadeTo("slow", 0);
+        $("#warning2").fadeTo("slow", 0);
+        $("#warning3").fadeTo("slow", 0);
+        $("#warning4").fadeTo("slow", 0);
+        $("#warning5").fadeTo("slow", 0);
+
+        document.forms["myform"].elements["i1_qty_f"].value = "";
+        document.forms["myform"].elements["i2_qty_f"].value = "";
+        document.forms["myform"].elements["i3_qty_f"].value = "";
+        document.forms["myform"].elements["i4_qty_f"].value = "";
+        document.forms["myform"].elements["sp_name_f"].value = "";
+
+        $("#i1_price").fadeTo("slow", 0.1);
+        $("#i2_price").fadeTo("slow", 0.1);
+        $("#i3_price").fadeTo("slow", 0.1);
+        $("#i4_price").fadeTo("slow", 0.1);
+
+        $("#i1_qty_out").fadeTo("slow", 0.1);
+        $("#i2_qty_out").fadeTo("slow", 0.1);
+        $("#i3_qty_out").fadeTo("slow", 0.1);
+        $("#i4_qty_out").fadeTo("slow", 0.1);
+
+        $("#i1_amount").fadeTo("slow", 0.1);
+        $("#i2_amount").fadeTo("slow", 0.1);
+        $("#i3_amount").fadeTo("slow", 0.1);
+        $("#i4_amount").fadeTo("slow", 0.1);
+
+        $("#item_no_l").fadeTo("slow", 0.1);
+        $("#price_l").fadeTo("slow", 0.1);
+        $("#qty_l").fadeTo("slow", 0.1);
+        $("#qty_total_l").fadeTo("slow", 0.1);
+
+        $("#i1_cell_num").fadeTo("slow", 0.1);
+        $("#i2_cell_num").fadeTo("slow", 0.1);
+        $("#i3_cell_num").fadeTo("slow", 0.1);
+        $("#i4_cell_num").fadeTo("slow", 0.1);
+
+        $("#total_sales").fadeTo("slow", 0.1);
+        $("#total_commission").fadeTo("slow", 0.1);
+        $("#total_sales_l").fadeTo("slow", 0.1);
+        $("#total_commission_l").fadeTo("slow", 0.1);
+
+        document.forms["myform"].elements["i1_price"].value = "";
+        document.forms["myform"].elements["i2_price"].value = "";
+        document.forms["myform"].elements["i3_price"].value = "";
+        document.forms["myform"].elements["i4_price"].value = "";
+
+        document.forms["myform"].elements["i1_qty_out"].value = "";
+        document.forms["myform"].elements["i2_qty_out"].value = "";
+        document.forms["myform"].elements["i3_qty_out"].value = "";
+        document.forms["myform"].elements["i4_qty_out"].value = "";
+
+        document.forms["myform"].elements["i1_amount"].value = "";
+        document.forms["myform"].elements["i2_amount"].value = "";
+        document.forms["myform"].elements["i3_amount"].value = "";
+        document.forms["myform"].elements["i4_amount"].value = "";
+ 
+
+        document.getElementById("total_sales").value = "";
+        document.getElementById("total_commission").value = "";
+        document.getElementById("earning_statement").innerHTML ="";  
+
+}
 
 
 </script>
 
 <form name="myform">
 
-<table style="width:100%; text-align:center; border-spacing:1em"> 
+<table style="text-align:center;">
 <tr>
-<td>Input first <br> number:</td>
-<td>Input second <br> number:</td>
-<td>Input third <br> number:</td>
+<td colspan="4" style="text-align:left"><b>Input the full name of the salesperson:</b></td>
+</tr>
+<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4"><input type="text" id="sp_name_f" size="50" style="text-align:left"></td>
 </tr>
 <tr>
-<td style="width:30%"><input type="text" id="num1" size="10" style="text-align:center"></td>
-<td style="width:30%"><input type="text" id="num2" size="10" style="text-align:center"></td>
-<td style="width:30%"><input type="text" id="num3" size="10" style="text-align:center"></td>
+<td colspan="4" style="text-align:left"><span id="warning5" style ="color: red; opacity:0">&nbsp Enter name for salesperson.</span></td>
+</tr>
+</tr>
+<tr><td>&nbsp</td></tr>
+<tr>
+<tr>
+<td colspan="4" style="text-align:left"><b>Input the quantity of items sold for each item number:</b></td>
+</tr>
+<tr><td>&nbsp</td></tr>
+<tr>
+<td>Item 1:</td><td><input type="text" id="i1_qty_f" size="10"></td><td colspan="2" style="text-align:left"><span id="warning1" style ="color: red; opacity:0"> Not a non-negative integer.</span></td>
 </tr>
 <tr>
-<td><span id="warning1" style ="color: red; opacity:0">Input for first number <br> is not numeric.</span></td>
-<td><span id="warning2" style ="color: red; opacity:0">Input for second number <br> is not numeric.</span></td>
-<td><span id="warning3" style ="color: red; opacity:0">Input for third number is <br> not numeric.</span></td>
+<td>Item 2:</td><td><input type="text" id="i2_qty_f" size="10"></td><td colspan="2" style="text-align:left"><span id="warning2" style ="color: red; opacity:0"> Not a non-negative integer.</span></td>
 </tr>
-
 <tr>
-<td></td><td><input id = "click_to_process" type="button" onclick="process()" value="Process Input"></td><td></td>
+<td>Item 3:</td><td><input type="text" id="i3_qty_f" size="10"></td><td colspan="2" style="text-align:left"><span id="warning3" style ="color: red; opacity:0"> Not a non-negative integer.</span></td>
 </tr>
-
+<tr>
+<td>Item 4:</td><td><input type="text" id="i4_qty_f" size="10"></td><td colspan="2" style="text-align:left"><span id="warning4" style ="color: red; opacity:0"> Not a non-negative integer.</span></td>
+</tr>
+<tr><td>&nbsp</td></tr>
+<tr>
+<td></td><td><input type="button" onclick="process()" value="Process Input"></td>
+<td><input type="button" onclick="fade_and_reset()" value="Fade / Reset"></td><td></td>
+</tr>
+<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4" style="text-align:left"><b>Processed Information Below:</b></td>
+</tr>
+<tr><td>&nbsp</td></tr>
+<tr>
+<td id="item_no_l" style="opacity:0.1">Item #</td>
+<td id="price_l"   style="opacity:0.1">Price</td>
+<td id="qty_l"   style="opacity:0.1">QTY Sold</td>
+<td id="qty_total_l"   style="opacity:0.1">Totals</td>
+</tr>
+<tr>
+<td id="i1_cell_num" style="opacity:0.1">1</td>
+<td><input readOnly type="text" id="i1_price" size="10" style="opacity:0.1"></td>
+<td><input readOnly type="text" id="i1_qty_out" size="10" style="opacity:0.1"></td>
+<td><input readOnly type="text" id="i1_amount" size="15" style="opacity:0.1"></td>
+</tr>
+<tr>
+<td id="i2_cell_num" style="opacity:0.1">2</td>
+<td><input readOnly type="text" id="i2_price" size="10" style="opacity:0.1"></td>
+<td><input readOnly type="text" id="i2_qty_out" size="10" style="opacity:0.1"></td>
+<td><input readOnly type="text" id="i2_amount" size="15" style="opacity:0.1"></td>
+</tr>
+<tr>
+<td id="i3_cell_num" style="opacity:0.1">3</td>
+<td><input readOnly type="text" id="i3_price" size="10" style="opacity:0.1"></td>
+<td><input readOnly type="text" id="i3_qty_out" size="10" style="opacity:0.1"></td>
+<td><input readOnly type="text" id="i3_amount" size="15" style="opacity:0.1"></td>
+</tr>
+<tr>
+<td id="i4_cell_num" style="opacity:0.1">4</td>
+<td><input readOnly type="text" id="i4_price" size="10" style="opacity:0.1"></td>
+<td><input readOnly type="text" id="i4_qty_out" size="10" style="opacity:0.1"></td>
+<td><input readOnly type="text" id="i4_amount" size="15" style="opacity:0.1"></td>
+</tr>
+<tr><td>&nbsp</td></tr>
+<tr>
+<td id="total_sales_l" colspan="3" style="opacity:0.1; text-align:right">Total Amount Sold:</td><td><input readOnly type="text" id="total_sales" size="15" style="opacity:0.1"></td>
+</tr>
+<tr>
+<td id="total_commission_l" colspan="3" style="opacity:0.1; text-align:right">Total Weekly Earnings:</td><td><input readOnly type="text" id="total_commission" size="15" style="opacity:0.1"></td>
+</tr>
+</tr>
+<tr><td>&nbsp</td></tr>
+<tr>
+<td colspan="4"><span id="earning_statement"><br></span></td>
+</tr>
 </table>
-
 </form>
 
-<table style="width:100%; text-align:center; border-spacing:1em">       
-<tr>
-<td id="sum_l" style="opacity:0.1; width:30%">
-The sum of the <br> three numbers is:<br>
-<textarea id="sum" readonly style="text-align:center" rows=1></textarea></td>
-<td id="avg_l" style="opacity:0.1; width:30%">
-The average of the <br> three numbers is:<br>
-<textarea id="avg"  readonly style="text-align:center" rows=1></textarea></td>
-<td id="prd_l" style="opacity:0.1; width:30%">
-The product of the <br> three numbers is:<br>
-<textarea id="prd"  readonly style="text-align:center" rows=1></textarea></td>
-</tr>
-<tr>
-<td id="minn_l" style="opacity:0.1; width:30%">
-The minimum of the <br> three numbers is:<br>
-<textarea id="minn" readonly style="text-align:center" rows=1></textarea></td>
-<td></td>
-<td id="maxx_l" style="opacity:0.1; width:30%">
-The maximum of the <br> three numbers is:<br>
-<textarea id="maxx" readonly style="text-align:center" rows=1></textarea></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td><td><input id ="fade_and_reset" type="button" onclick="fade_and_reset()" value="Fade / Reset"></td>
-<td></td>
-</tr>
-
-</table>
-
 </article>
-
-
-
-
 </section>
 
 
@@ -195,7 +413,7 @@ The maximum of the <br> three numbers is:<br>
 <footer>
 <h4>Christopher Bulkley - Logston</h4>
 <h5>San Francisco City College - Fall 2020</h5>
-<h6>Last Updated 2020 - September - 23</h6>
+<h6>Last Updated 2020 - September - 27</h6>
 </footer>
 
 </body>
