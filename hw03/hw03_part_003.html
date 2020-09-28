@@ -7,7 +7,24 @@
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 3 Part 3">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../scripts/misc_functions.js"></script>
+
+<style> 
+input {text-align:center;}
+
+.temp_button {width:5em; height: 2em;color: white; background-color: #09829b; border-color: black; border-radius: 5px; border-width: medium;}
+.temp_button:active{background-color:#9e822e;border-width: thin;border-radius: 5px;}
+
+.temp_button2 {width:5em; height: 2em;color: white; background-color: #9b0946; border-color: black; border-radius: 5px; border-width: medium;}
+.temp_button2:active{background-color:#9e822e;border-width: thin;border-radius: 5px;}
+
+
+.bdc {border: 2px solid black; border-collapse: collapse; border-spacing:0;padding: 10px;}
+</style>
+
 </head>
+
 <body>
 
 <section>
@@ -39,18 +56,422 @@
       <li><a href="hw03_part_004.html">Part 4 - Extra Credit</a></li>
     </ul>
 
-  <h4>Assignment Info</h4>
+  <h4>Temperature Converter</h4>
 
-aaa
+<script>
+
+function process(from_val, to_val)
+
+   {
+
+    var temp_input,  temp_input_n, temp_out, warning1;
+
+    temp_input = document.forms["myform"].elements["temp_input"].value;
+
+    temp_input_n = Number(temp_input);
+
+    if ( isNaN(temp_input_n) || temp_input == "" ) 
+
+        {temp_input = "";
+
+        $("#temp_out").fadeTo("slow", 0);
+        $("#temp_out_l").fadeTo("slow", 0);
+        $("#warning1").fadeTo("slow", 1);
+
+        document.getElementById("temp_out").value = "";
+        document.getElementById("temp_out_l").innerHTML = "<br>";
+        document.getElementById("warning1").innerHTML ="Input temperature is not numeric.<br><br>";
+        if (isElementInViewport(input_hdr)==false){document.getElementById("input_hdr").scrollIntoView();}                   
+
+        }
+                                    
+        else 
+
+        {
+
+
+         if (from_val == 1)
+
+             {
+ 
+              if (temp_input_n < -459.67)
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 0);
+                    $("#temp_out_l").fadeTo("slow", 0);
+                    $("#warning1").fadeTo("slow", 1);
+
+                    document.getElementById("warning1").innerHTML ="Input temperature is not physically possible.<br>-459.67 &#176F is the temperature of absolute zero.";   
+                if (isElementInViewport(input_hdr)==false){document.getElementById("input_hdr").scrollIntoView();}                   
+                    }
+ 
+              else if (to_val == 2)
+
+                    {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round((5/9)*(temp_input_n - 32));
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176F in &#176C is ";
+
+                    }
+
+              else if (to_val == 3)
+
+                    {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round((5/9)*(temp_input_n - 32) + 273.15);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176F in K is ";
+
+                    }
+
+              else if (to_val == 4)
+
+                    {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round(temp_input_n + 459.67);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176F in &#176R is ";
+
+                    }
+
+               }
+
+         if (from_val == 2)
+
+             {
+ 
+              if (temp_input_n < -273.15)
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 0);
+                    $("#temp_out_l").fadeTo("slow", 0);
+                    $("#warning1").fadeTo("slow", 1);
+
+                    document.getElementById("warning1").innerHTML ="Input temperature is not physically possible.<br>-273.15 &#176C is the temperature of absolute zero.";   
+                if (isElementInViewport(input_hdr)==false){document.getElementById("input_hdr").scrollIntoView();}                   
+
+                    }
+ 
+              else if (to_val == 1) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round(9/5*temp_input_n + 32);
+
+                    document.getElementById("temp_out").value = temp_out;
+                  
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176C in &#176F is ";
+
+                    }
+
+              else if (to_val == 3) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round(temp_input_n + 273.15);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176C in K is ";
+
+                    }
+
+              else if (to_val == 4) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round((9/5)*temp_input_n + 491.67);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176C in &#176R is ";
+
+                    }
+
+               }
+
+
+          if (from_val == 3)
+
+             {
+ 
+              if (temp_input_n < 0)
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 0);
+                    $("#temp_out_l").fadeTo("slow", 0);
+                    $("#warning1").fadeTo("slow", 1);
+
+                    document.getElementById("warning1").innerHTML ="Input temperature is not physically possible.<br>0 K is the temperature of absolute zero.";   
+             if (isElementInViewport(input_hdr)==false){document.getElementById("input_hdr").scrollIntoView();}                      
+
+                    }
+ 
+              else if (to_val == 1) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round(9/5*(temp_input_n -273.15) + 32);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " K in &#176F is ";
+
+                    }
+
+              else if (to_val == 2) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round(temp_input_n - 273.15);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " K in &#176C is ";
+
+                    }
+
+              else if (to_val == 4) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round(9/5*temp_input_n);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " K in &#176R is ";
+
+                    }
+
+
+               }
 
 
 
+          if (from_val == 4)
 
-  </article>
+             {
+ 
+              if (temp_input_n < 0)
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 0);
+                    $("#temp_out_l").fadeTo("slow", 0);
+                    $("#warning1").fadeTo("slow", 1);
+
+                    document.getElementById("warning1").innerHTML ="Input temperature is not physically possible.<br>0 &#176R is the temperature of absolute zero.";   
+                if (isElementInViewport(input_hdr)==false){document.getElementById("input_hdr").scrollIntoView();}                   
+                    }
+ 
+              else if (to_val == 1) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round(temp_input_n - 459.67);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176R in &#176F is ";
+                    if (isElementInViewport(foot_notes)==false){document.getElementById("foot_notes").scrollIntoView();}                   
+
+                    }
+
+              else if (to_val == 2) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round((5/9)*(temp_input_n - 491.67));
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176R in &#176C is ";
+
+                    }
+
+              else if (to_val == 3) 
+
+                   {
+
+                    $("#temp_out").fadeTo("slow", 1);
+                    $("#temp_out_l").fadeTo("slow", 1);
+                    $("#warning1").fadeTo("slow", 0);
+
+                    temp_out = Math.round(5/9*temp_input_n);
+
+                    document.getElementById("temp_out").value = temp_out;
+                    document.getElementById("temp_out_l").innerHTML = temp_input + " &#176R in K is ";
+
+                    }
 
 
+               }
+
+         }
+
+   }
+
+function fade_and_reset()
+
+{
+
+        $("#warning1").fadeTo("slow", 0);
+
+        document.forms["myform"].elements["temp_out_f"].value = "";
+
+        $("#temp_out_l").fadeTo("slow", 0.1);
+
+        document.forms["myform"].elements["temp_out"].value = "";
 
 
+        document.getElementById("total_sales").value = "";
+        document.getElementById("total_commission").value = "";
+        document.getElementById("warning1").innerHTML ="<br><br>";   
+
+}
+
+
+</script>
+
+<form name="myform">
+
+<table style="text-align:center; border-collapse: collapse;">
+<tr>
+<td id = "input_hdr" colspan = "5" style="text-align:center"><b>Input temperature:</b></td>
+</tr>
+<tr>
+<td colspan = "5">&nbsp;</td>
+</tr>
+<tr>
+<td colspan = "5"><input type="text" id="temp_input" size="10" style="text-align:center"></td>
+</tr>
+<tr>
+<td colspan="5"><span id="warning1" style="color: red; opacity:0.1"><br><br></span></td>
+</tr>
+<tr>
+<td colspan = "5">&nbsp;</td>
+</tr>
+<tr>
+<td colspan = "5" style="text-align:center"><b>Push applicable button below:</b></td>
+</tr>
+<tr>
+<td colspan = "5">&nbsp;</td>
+</tr>
+<tr style="height:50px">
+<td style="width:18%"></td><td class="bdc" style="width:18%"><b>To &#176;F</b></td><td class="bdc" style="width:18%"><b>To &#176;C</b></td><td class="bdc" style="width:18%"><b>To K</b></td><td class="bdc" style="width:18%"><b>To &#176;R</b></td>
+</tr>
+<tr>
+<td class="bdc"><b>From &#176;F</b></td>
+<td class="bdc">-</td>
+<td class="bdc"><input class ="temp_button2" type="button" onclick="process(1, 2)" value="&#176;F to &#176;C"></td>
+<td class="bdc"><input class ="temp_button" type="button" class ="temp_button" onclick="process(1, 3)" value="&#176;F to K"></td>
+<td class="bdc"><input class ="temp_button" type="button" class ="temp_button" onclick="process(1, 4)" value="&#176;F to &#176;R"></td>
+</tr>
+<tr>
+<td class="bdc"><b>From &#176;C</b></td>
+<td class="bdc"><input class ="temp_button2" type="button" onclick="process(2, 1)" value="&#176;C to &#176;F"></td>
+<td class="bdc">-</td>
+<td class="bdc"><input class ="temp_button" type="button" onclick="process(2, 3)" value="&#176;C to K"></td>
+<td class="bdc"><input class ="temp_button" type="button" onclick="process(2, 4)" value="&#176;C to &#176;R"></td>
+</tr>
+<tr>
+<td class="bdc"><b>From &nbsp;K</b></td>
+<td class="bdc"><input class ="temp_button" type="button" onclick="process(3, 1)" value="K to &#176;F"></td>
+<td class="bdc"><input class ="temp_button" type="button" onclick="process(3, 2)" value="K to &#176;C"></td>
+<td class="bdc">-</td>
+<td class="bdc"><input class ="temp_button" type="button" onclick="process(3, 4)" value="K to &#176;R"></td>
+</tr>
+<tr>
+<td class="bdc"><b>From &#176;R</b></td>
+<td class="bdc"><input class ="temp_button" type="button" onclick="process(4, 1)" value="&#176;R to &#176;F"></td>
+<td class="bdc"><input class ="temp_button" type="button" onclick="process(4, 2)" value="&#176;R to &#176;C"></td>
+<td class="bdc"><input class ="temp_button" type="button" onclick="process(4, 3)" value="&#176;R to K"></td>
+<td class="bdc">-</td>
+</tr>
+<tr>
+<td colspan = "5">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="5"><span id="temp_out_l" style="opacity:0">&nbsp;</span></td>
+</tr>
+<tr>
+<td colspan = "5">&nbsp;</td>
+</tr>
+<tr>
+<td colspan = "5"><input  readOnly type="text" id="temp_out" size="10" style="opacity:0"></td>
+</tr>
+<tr>
+<td colspan = "5">&nbsp;</td>
+</tr>
+<tr>
+<td colspan = "5" style="text-align:left"><b>Notes:</b></td>
+</tr>
+<tr>
+<td colspan = "5" style="text-align:left">-Assignment buttons have red backgrounds.</td>
+</tr>
+<tr>
+<td colspan = "5" style="text-align:left">-Additional buttons have blue backgrounds.</td>
+</tr>
+<tr>
+<td colspan = "5" style="text-align:left">&#176;F: Degrees Fahrenheit</td>
+</tr>
+<tr>
+<td colspan = "5" style="text-align:left">&#176;C: Degrees Celsius</td>
+</tr>
+<tr>
+<td colspan = "5" style="text-align:left">&nbsp;K: Degrees Kelvin (absolute scale based on Celsius)</td>
+</tr>
+<tr>
+<td colspan = "5" style="text-align:left">&#176;R: Degrees Rankine (absolute scale based on Rankine)</td>
+</tr>
+</table>
+</form>
+
+</article>
 </section>
 
 
@@ -58,7 +479,7 @@ aaa
 <footer>
 <h4>Christopher Bulkley - Logston</h4>
 <h5>San Francisco City College - Fall 2020</h5>
-<h6>Last Updated 2020 - September - 23</h6>
+<h6>Last Updated 2020 - September - 27</h6>
 </footer>
 
 </body>
