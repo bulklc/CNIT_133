@@ -7,8 +7,96 @@
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 3 Part 4">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+var num1;
+var num2;
+
+function create_vals()
+
+    {
+
+     num1 = Math.floor(Math.random() * 10);
+     num2 = Math.floor(Math.random() * 10);
+
+     document.getElementById("num1").innerHTML = Number(num1);
+     document.getElementById("num2").innerHTML = Number(num2);
+    
+     }
+
+async function process()
+
+    {
+ 
+     var answer = document.getElementById("answer").value;
+     var response = "";
+     var answer_n = Number(answer);
+     if (answer == "" || isNaN(answer_n))
+
+     {
+
+       $("#warning1").fadeTo("slow", 1);
+       $("#response_c").fadeTo("slow", 0);
+       $("#response_w").fadeTo("slow", 0);
+       document.getElementById("answer").value = "";
+
+
+      }
+
+     else if (answer_n == num1*num2)
+
+     {
+
+       $("#warning1").fadeTo("slow", 0);
+       $("#response_c").fadeTo("slow", 1);
+       $("#response_w").fadeTo("slow", 0);
+       document.getElementById("answer").value = ""; 
+
+       await new Promise(r => setTimeout(r, 1000));
+
+
+       var q_continue = window.confirm("Would you like to try another one?");
+       if (q_continue)
+
+           {
+
+            location.reload();
+
+            }
+
+        else
+
+           {
+ 
+             alert("Goodbye and Thanks");
+           
+            }
+
+      }
+
+     else
+
+     {
+
+       $("#warning1").fadeTo("slow", 0);
+       $("#response_c").fadeTo("slow", 0);
+       $("#response_w").fadeTo("slow", 1);
+       document.getElementById("answer").value = "";
+
+      } 
+
+
+
+     }
+
+
+</script>
+
 </head>
-<body>
+
+<body onload="create_vals()">
 
 <section>
 
@@ -39,14 +127,24 @@
       <li><b>Part 4 - Extra Credit</b></li>
     </ul>
 
-  <h4>Assignment Info</h4>
-
-Extra credit for this assignment has not been attempted as of the date late updated as indicated below.
+  <h4>Educational Game</h4>
 
 
 
 
-  </article>
+<p>How much is <span id="num1"></span> times <span id="num2"></span>?</p>
+
+<p><input type="text" id="answer" size="10" style="text-align:center"></p>
+
+<p><input id = "click_to_process" type="button" onclick="process()" value="Check Answer"><p>
+
+<p><span id="warning1" style ="color: orange; opacity:0">Not a number input (can't include letters or punctuation marks).</span></p>
+
+<p><span id="response_c" style ="color: green; opacity:0">Very Good!</span></p>
+
+<p><span id="response_w" style ="color: red; opacity:0">No. Please try again.</span></p>
+
+</article>
 
 
 
@@ -58,7 +156,7 @@ Extra credit for this assignment has not been attempted as of the date late upda
 <footer>
 <h4>Christopher Bulkley - Logston</h4>
 <h5>San Francisco City College - Fall 2020</h5>
-<h6>Last Updated 2020 - September - 27</h6>
+<h6>Last Updated 2020 - September - 28</h6>
 </footer>
 
 </body>
