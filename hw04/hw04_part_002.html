@@ -7,21 +7,9 @@
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 4 Part 2">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script type="text/javascript">
-function table()
-{
-	this.calcmul = calc;
-}
- function calc(arg1,arg2)
- {
-		var multi = (arg1 * arg2);
-		return multi;	
- }
- var table2 = new table();  
-</script>
-
 </head>
-<body>
+<body onload="create_ci_tables()">
+
 
 <section>
 
@@ -42,7 +30,7 @@ function table()
             </ul>
     </nav>
   
-    <article>
+    <article id="hw04_02_article">
         <h4>Assignment Navigation</h4>
             <ul>
                 <li><a href="hw04.html">Part 0 - Assignment Home Page</a></li>
@@ -51,50 +39,6 @@ function table()
                 <li><a href="hw04_part_003.html">Part 3 - Extra Credit</a></li>
             </ul>
 
-            <h4>Assignment Info</h4>
-
-            <table style="text-align:center; border-collapse: collapse;">
-	        <thead><tr><script>
-	            for(var j=1; j<=10; j++)
-                        
-			     {
-			     
-			      document.write("<th><label style='color:red;'>"+i+"</label></th>");
-			      
-			     }
-			     
-		</script></tr></thead>
-		
-		<!<tbody>
-		
-		    <script type="text/javascript">
-		    
-		        for(var i =1; i<=10; i++)
-		        
-		            {
-	                    
-	                     document.write("<tr>");
-	                    
-	                     for(var k=1; k<=10; k++)
-	                    
-		                 {
-		                
-			             var arg1 = i;
-			             var arg2 = k; 
-			             document.write("<td>"+table2.calcmul(arg1,arg2)+"</td>");
-			             
-		                 }
-	                       
-	                      document.write("</tr>"); 
-                         
-                            }	
-
-                    </script>
-                    
-	        <! -</tbody>  
-
-        </table>
-
     </article>
 
 </section>
@@ -102,10 +46,104 @@ function table()
 
 
 <footer>
-<h4>Christopher Bulkley - Logston</h4>
-<h5>San Francisco City College - Fall 2020</h5>
-<h6>Last Updated 2020 - October - 16</h6>
+    <h4>Christopher Bulkley - Logston</h4>
+    <h5>San Francisco City College - Fall 2020</h5>
+    <h6>Last Updated 2020 - October - 17</h6>
 </footer>
+
+<script>
+
+    function create_ci_tables()
+    
+        {
+        
+         create_ci_table(5);
+        
+         create_ci_table(6);
+        
+         create_ci_table(7);
+        
+        }
+    
+    function create_ci_table(int_rate)
+
+        {
+
+         var table_intro = document.createElement("H4");   
+         var table_intro_text = document.createTextNode("Table for "+int_rate+"% Compound Interest");
+
+         table_intro.appendChild(table_intro_text);    
+         document.getElementById("hw04_02_article").appendChild(table_intro);
+        
+         var interest_rate = int_rate/100;
+         var header_text = ['Year', 'Amount on Deposit', 'Interest Rate'];
+
+        
+         var tble = document.createElement("TABLE");
+         tble.setAttribute("style", "text-align:center; border-collapse: collapse;");
+         
+         var rrow = document.createElement("TR");
+         rrow.setAttribute("style", 'font-weight: bold; color:white;background-color: #800000;');
+
+         for(var jj=0; jj<header_text.length; jj++)
+	 
+	     {
+
+              var ccel = document.createElement("TD");
+              ccel.setAttribute("class","bdc");
+              var ttxt = document.createTextNode(header_text[jj]);
+              ccel.appendChild(ttxt);
+              rrow.appendChild(ccel);
+                   
+             }
+                                     
+         tble.appendChild(rrow);
+          
+         for(var ii=1; ii<=10; ii++)
+                  
+             {         
+                  
+              var rrow = document.createElement("TR");
+              if (ii % 2 == 1)
+              
+                  {rrow.setAttribute("style", 'font-weight: bold; color:white;background-color: #646480;');} 
+                  
+              else
+              
+                  {rrow.setAttribute("style", 'font-weight: bold; color:white;background-color: #808064;');}    
+              
+              
+              var ccel_A = document.createElement("TD");
+              var ccel_B = document.createElement("TD");
+              var ccel_C = document.createElement("TD");
+                   
+              ccel_A.setAttribute("class","bdc");
+              ccel_B.setAttribute("class","bdc");
+              ccel_C.setAttribute("class","bdc");
+                   
+              var ttxt_A = document.createTextNode(ii);
+              var ttxt_B = document.createTextNode((1000*(1+interest_rate)**ii).toFixed(2));
+              var ttxt_C = document.createTextNode(interest_rate);
+                    
+              ccel_A.appendChild(ttxt_A);
+              rrow.appendChild(ccel_A);
+                   
+              ccel_B.appendChild(ttxt_B);
+              rrow.appendChild(ccel_B);
+                   
+              ccel_C.appendChild(ttxt_C);
+              rrow.appendChild(ccel_C);
+                                        
+              tble.appendChild(rrow);
+         
+             }
+         
+         
+         document.getElementById("hw04_02_article").appendChild(tble);
+         
+        }
+
+</script>
 
 </body>
 </html>
