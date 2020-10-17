@@ -4,8 +4,21 @@
 <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
 <title>CNIT133-CBL-HW04-P02</title>
 <meta charset="utf-8">
-<meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Home Page for Homework 4">
+<meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 4 Part 2">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script type="text/javascript">
+function table()
+{
+	this.calcmul = calc;
+}
+ function calc(arg1,arg2)
+ {
+		var multi = (arg1 * arg2);
+		return multi;	
+ }
+ var table2 = new table();  
+</script>
 
 </head>
 <body>
@@ -15,41 +28,74 @@
     <h1>CNIT 133 - JavaScript, jQuery and AJAX</h1>
     <h2>Homework 4 - Looping Statements</h2>
 
-  <nav>  
-    <h4>Assignments</h4>
-    <ul>
-      <li><a href="../hw01.html">Homework 1 - Home Page</a></li>
-      <li><a href="../hw02/hw02.html">Homework 2</a></li>
-      <li><a href="../hw03/hw03.html">Homework 3</a></li>
-      <li><b>Homework 4</b></li>
-      <li><a href="../hw05/hw05.html">Homework 5</a></li>
-      <li><a href="../hw06/hw06.html">Homework 6</a></li>
-      <li><a href="../hw07/hw07.html">Homework 7</a></li>
-      <li><a href="../hw08/hw08.html">Homework 8</a></li>
-    </ul>
-  </nav>
+    <nav>  
+        <h4>Assignments</h4>
+            <ul>
+                <li><a href="../hw01.html">Homework 1 - Home Page</a></li>
+                <li><a href="../hw02/hw02.html">Homework 2</a></li>
+                <li><a href="../hw03/hw03.html">Homework 3</a></li>
+                <li><b>Homework 4</b></li>
+                <li><a href="../hw05/hw05.html">Homework 5</a></li>
+                <li><a href="../hw06/hw06.html">Homework 6</a></li>
+                <li><a href="../hw07/hw07.html">Homework 7</a></li>
+                <li><a href="../hw08/hw08.html">Homework 8</a></li>
+            </ul>
+    </nav>
   
-  <article>
-  <h4>Assignment Navigation</h4>
-    <ul>
-      <li><a href="hw04.html">Part 0 - Assignment Home Page</a></li>
-      <li><a href="hw04_part_001.html">Part 1 - Sum and Product Loops</a></li>
-      <li><b>Part 2 - Compound Interest Loops</b></li>
-      <li><a href="hw04_part_003.html">Part 3 - Extra Credit</a></li>
-    </ul>
+    <article>
+        <h4>Assignment Navigation</h4>
+            <ul>
+                <li><a href="hw04.html">Part 0 - Assignment Home Page</a></li>
+                <li><a href="hw04_part_001.html">Part 1 - Sum and Product Loops</a></li>
+                <li><b>Part 2 - Compound Interest Loops</b></li>
+                <li><a href="hw04_part_003.html">Part 3 - Extra Credit</a></li>
+            </ul>
 
-  <h4>Assignment Info</h4>
+            <h4>Assignment Info</h4>
 
-aaa
+            <table style="text-align:center; border-collapse: collapse;">
+	        <thead><tr><script>
+	            for(var j=1; j<=10; j++)
+                        
+			     {
+			     
+			      document.write("<th><label style='color:red;'>"+i+"</label></th>");
+			      
+			     }
+			     
+		</script></tr></thead>
+		
+		<!<tbody>
+		
+		    <script type="text/javascript">
+		    
+		        for(var i =1; i<=10; i++)
+		        
+		            {
+	                    
+	                     document.write("<tr>");
+	                    
+	                     for(var k=1; k<=10; k++)
+	                    
+		                 {
+		                
+			             var arg1 = i;
+			             var arg2 = k; 
+			             document.write("<td>"+table2.calcmul(arg1,arg2)+"</td>");
+			             
+		                 }
+	                       
+	                      document.write("</tr>"); 
+                         
+                            }	
 
+                    </script>
+                    
+	        <! -</tbody>  
 
+        </table>
 
-
-
-  </article>
-
-
-
+    </article>
 
 </section>
 
