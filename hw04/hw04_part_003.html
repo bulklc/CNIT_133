@@ -7,8 +7,110 @@
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Home Page for Homework 4">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+
+
+function set_page_place_holder()
+
+    {
+
+     document.getElementById("show_square").innerHTML = '<br>'.repeat(10);
+
+    }
+
+
+function show_square()
+
+    {
+ 
+     var square_output = '';
+     var size = document.getElementById("square_size").value;
+     var response = "";
+     var size_n = Number(size);
+     
+     if (size == "" || isNaN(size_n) || Number.isInteger(size_n) == false || size_n < 2 || size_n > 10)
+
+         {
+
+          $("#warning").fadeTo("slow", 1);
+          $("#show_square").fadeTo("slow", 0);
+          
+
+          
+          if (size == "" || isNaN(size_n) || Number.isInteger(size_n) == false)
+          
+              {document.getElementById("warning").innerHTML = "Square size must be numeric and an integer.";}
+
+          else if (size_n < 2)
+          
+              {document.getElementById("warning").innerHTML = "Square size must not be less than 2.";}
+              
+          else
+          
+              {document.getElementById("warning").innerHTML = "Square size must not be greater than 10.";}
+
+         }
+
+     else
+
+         {
+ 
+          square_output = '';
+ 
+          $("#warning").fadeTo("slow", 0);
+          $("#show_square").fadeTo("slow", 1);
+          document.getElementById("warning").innerHTML = '&nbsp';;
+          
+          for(var ii=1; ii<=size_n; ii++)
+          
+              {
+              
+               if (ii==1 || ii == size_n)
+               
+                   {
+                   
+                    square_output += '*&nbsp;'.repeat(size_n) + '<br>';
+                   
+                   }
+                   
+               else
+              
+                   {
+                   
+                    square_output += '*&nbsp;'+'&nbsp;'.repeat(2*(size_n-2)) + '*<br>';
+                   
+                   }    
+
+          
+              }
+              
+          for (var ii=size_n; ii<=9; ii++)    
+          
+              {
+              
+               square_output += '&nbsp;<br>';
+              
+              }
+           
+              
+          document.getElementById("show_square").innerHTML = square_output;
+          
+          
+           
+         }
+
+     }
+
+
+</script>
+
+
+
 </head>
-<body>
+<body onload="set_page_place_holder()">
 
 <section>
 
@@ -38,9 +140,22 @@
       <li><b>Part 3 - Extra Credit</b></li>
     </ul>
 
-  <h4>Assignment Info</h4>
+  <h4>Square Generator</h4>
 
-aaa
+  <p>Insert Square Size Below</p>
+
+  <p><input type="text" id="square_size" size="10" style="text-align:center"></p>
+
+  <p><input type="button" onclick="show_square()" value="Show Square"><p>
+
+  <p><span id="warning" style ="color: red; opacity:0">&nbsp;</span></p>
+
+  <p><span id="show_square" style ="font-family: 'Courier New', Courier, monospace; opacity:0;"></span></p>
+
+
+
+
+</article>
 
 
 
