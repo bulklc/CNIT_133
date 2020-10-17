@@ -6,7 +6,19 @@
 <meta charset="utf-8">
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Home Page for Homework 4">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<style>
+#draggable { width: 150px; height: 150px; padding: 0.5em; }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#draggable1" ).draggable();
+    $( "#draggable2" ).draggable();
+  } );
+  </script>
 </head>
 <body>
 
@@ -38,9 +50,13 @@
       <li><a href="hw04_part_003.html">Part 3 - Extra Credit</a></li>
     </ul>
 
+
+
+
+
   <h4>Part 1a - For Loops</h4>
 
-<table style="text-align:center;">
+<table style="text-align:right;">
   <tr>
     <td>5</td>
     <td></td>
@@ -51,8 +67,8 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_prd_1"></td>
   </tr>
   <tr>
     <td>5</td>
@@ -64,8 +80,8 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_prd_2"></td>
   </tr>
   <tr>
     <td>5</td>
@@ -77,8 +93,8 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_prd_3"></td>
   </tr>
   <tr>
     <td>5</td>
@@ -90,8 +106,8 @@
     <td>17</td>
     <td></td>
     <td></td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_prd_4"></td>
   </tr>
   <tr>
     <td>5</td>
@@ -103,15 +119,10 @@
     <td>17</td>
     <td>x</td>
     <td>21</td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_prd_5"></td>
   </tr>
-</table>
-
-
-<br><br>
-
-<table style="text-align:center;">
+<tr><td>&nbsp</td></tr>
   <tr>
     <td>5</td>
     <td></td>
@@ -122,8 +133,8 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_sum_1"></td>
   </tr>
   <tr>
     <td>5</td>
@@ -135,8 +146,8 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_sum_2"></td>
   </tr>
   <tr>
     <td>5</td>
@@ -148,8 +159,8 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_sum_3"></td>
   </tr>
   <tr>
     <td>5</td>
@@ -161,8 +172,8 @@
     <td>17</td>
     <td></td>
     <td></td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_sum_4"></td>
   </tr>
   <tr>
     <td>5</td>
@@ -174,24 +185,286 @@
     <td>17</td>
     <td>+</td>
     <td>21</td>
-    <td>is</td>
-    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="a_sum_5"></td>
   </tr>
 </table>
 
 
 
+<h4>Part 1b - While Loops</h4>
 
-  <h4>Part 1b - While Loops</h4>
+<table style="text-align:right;">
+  <tr>
+    <td>3</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_prd_1"></td>
+  </tr> 
+  <tr>
+    <td>3</td>
+    <td>x</td>
+    <td>6</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_prd_2"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>x</td>
+    <td>6</td>
+    <td>x</td>
+    <td>9</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_prd_3"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>x</td>
+    <td>6</td>
+    <td>x</td>
+    <td>9</td>
+    <td>x</td>
+    <td>12</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_prd_4"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>x</td>
+    <td>6</td>
+    <td>x</td>
+    <td>9</td>
+    <td>x</td>
+    <td>12</td>
+    <td>x</td>
+    <td>15</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_prd_5"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>x</td>
+    <td>6</td>
+    <td>x</td>
+    <td>9</td>
+    <td>x</td>
+    <td>12</td>
+    <td>x</td>
+    <td>15</td>
+    <td>x</td>
+    <td>18</td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_prd_6"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>x</td>
+    <td>6</td>
+    <td>x</td>
+    <td>9</td>
+    <td>x</td>
+    <td>12</td>
+    <td>x</td>
+    <td>15</td>
+    <td>x</td>
+    <td>18</td>
+    <td>x</td>
+    <td>21</td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_prd_7"></td>
+  </tr>
+<tr><td>&nbsp</td></tr>
+  <tr>
+    <td>3</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_sum_1"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>+</td>
+    <td>6</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_sum_2"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>+</td>
+    <td>6</td>
+    <td>+</td>
+    <td>9</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_sum_3"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>+</td>
+    <td>6</td>
+    <td>+</td>
+    <td>9</td>
+    <td>+</td>
+    <td>12</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_sum_4"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>+</td>
+    <td>6</td>
+    <td>+</td>
+    <td>9</td>
+    <td>+</td>
+    <td>12</td>
+    <td>+</td>
+    <td>15</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_sum_5"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>+</td>
+    <td>6</td>
+    <td>+</td>
+    <td>9</td>
+    <td>+</td>
+    <td>12</td>
+    <td>+</td>
+    <td>15</td>
+    <td>+</td>
+    <td>18</td>
+    <td></td>
+    <td></td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_sum_6"></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>+</td>
+    <td>6</td>
+    <td>+</td>
+    <td>9</td>
+    <td>+</td>
+    <td>12</td>
+    <td>+</td>
+    <td>15</td>
+    <td>+</td>
+    <td>18</td>
+    <td>+</td>
+    <td>21</td>
+    <td>&nbspis&nbsp</td>
+    <td id="b_sum_7"></td>
+  </tr>
+</table>
 
 
 
+<h4>You Decide: Drag each candidate to your desired location.</h4>
+
+
+
+<table>
+<tr>
+<td></td>
+<td><div id="draggable1" class="ui-widget-content">
+  <img src="donald_trump.jpg" alt="Donald Trump" style="height:150px;">
+</div>
+</td>
+<td><div id="draggable2" class="ui-widget-content">
+  <img src="joe_biden.jpg" alt="Joe Biden" style="height:150px;">
+</div></td>
+<td></td>
+</tr>
+<tr>
+<td><img src="trash_with_liner.jpg" alt="Trash" style="width:200px;height:200px;"></td>
+<td></td><td></td>
+<td><img src="white_house.jpg" alt="White House" style="width:200px;height:200px;"></td>
+<tr>
+
+
+</table>
 
 
   </article>
-
-
-
 
 </section>
 
@@ -205,3 +478,84 @@
 
 </body>
 </html>
+
+
+<script>
+
+var a_prd_num = [];
+a_prd_num[0] = 1;
+var a_sum_num = [];
+a_sum_num[0] = 0;
+
+var a_prd_1, a_prd_2, a_prd_3, a_prd_4, a_prd_5;
+var a_sum_1, a_sum_2, a_sum_3, a_sum_4, a_sum_5;
+
+var b_prd_num = [];
+b_prd_num[0] = 1;
+var b_sum_num = [];
+b_sum_num[0] = 0;
+
+var b_prd_1, b_prd_2, b_prd_3, b_prd_4, b_prd_5, b_prd_6, b_prd_7;
+var b_sum_1, b_sum_2, b_sum_3, b_sum_4, b_sum_5, b_sum_6, b_sum_7;
+
+
+var jj = 1;
+
+for (ii = 5; ii < 22; ii+=4) 
+
+    {
+     
+     a_prd_num[jj] = a_prd_num[jj-1]*ii;
+     a_sum_num[jj] = a_sum_num[jj-1] + ii;
+     jj+=1;  
+    
+    }
+
+
+jj = 1;
+
+var iii = 3; 
+
+
+while (iii<22)
+   
+     {
+     
+     b_prd_num[jj] = b_prd_num[jj-1]*iii;
+     b_sum_num[jj] = b_sum_num[jj-1] + iii;
+     iii += 3;
+     jj+=1;  
+    
+    }    
+   
+      document.getElementById("a_prd_1").innerHTML = a_prd_num[1];
+      document.getElementById("a_prd_2").innerHTML = a_prd_num[2];
+      document.getElementById("a_prd_3").innerHTML = a_prd_num[3];
+      document.getElementById("a_prd_4").innerHTML = a_prd_num[4];
+      document.getElementById("a_prd_5").innerHTML = a_prd_num[5];
+      
+      document.getElementById("a_sum_1").innerHTML = a_sum_num[1];
+      document.getElementById("a_sum_2").innerHTML = a_sum_num[2];
+      document.getElementById("a_sum_3").innerHTML = a_sum_num[3];
+      document.getElementById("a_sum_4").innerHTML = a_sum_num[4];
+      document.getElementById("a_sum_5").innerHTML = a_sum_num[5];
+      
+      document.getElementById("b_prd_1").innerHTML = b_prd_num[1];
+      document.getElementById("b_prd_2").innerHTML = b_prd_num[2];
+      document.getElementById("b_prd_3").innerHTML = b_prd_num[3];
+      document.getElementById("b_prd_4").innerHTML = b_prd_num[4];
+      document.getElementById("b_prd_5").innerHTML = b_prd_num[5];
+      document.getElementById("b_prd_6").innerHTML = b_prd_num[6];
+      document.getElementById("b_prd_7").innerHTML = b_prd_num[7];
+      
+      document.getElementById("b_sum_1").innerHTML = b_sum_num[1];
+      document.getElementById("b_sum_2").innerHTML = b_sum_num[2];
+      document.getElementById("b_sum_3").innerHTML = b_sum_num[3];
+      document.getElementById("b_sum_4").innerHTML = b_sum_num[4];
+      document.getElementById("b_sum_5").innerHTML = b_sum_num[5];
+      document.getElementById("b_sum_6").innerHTML = b_sum_num[6];     
+      document.getElementById("b_sum_7").innerHTML = b_sum_num[7];      
+
+
+
+</script>
