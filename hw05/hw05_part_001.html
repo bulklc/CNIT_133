@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 5 Part 1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
   </head>
   
   <body>
@@ -39,14 +42,268 @@
           <li style ="opacity:0"></li>
         </ul>
 
-        <h4>Assignment Info</h4>
+        <script>
+    
+          function get_selected_radio_value(radio_group_name)
+          
+              { 
+              
+               var radios = document.getElementsByName(radio_group_name);
+   
+               for (var ii = 0, length = radios.length; ii < length; ii++) 
+               
+                 {
+               
+                  if (radios[ii].checked) 
+                 
+                    {
 
-          aaa
+                     var selected_value = radios[ii].value;
+                     break;
+          
+                     }
+                  
+                  }
+ 
+                return selected_value;
+
+               }
+
+
+            function show_text() 
+            
+              {
+              
+               //var input_text, font_type, col_choice_red, col_choice_blue, col_choice_yellow, text_un_it = null;
+              
+               var input_text = document.forms["HW05-P01_form"].elements["input_text"].value;
+               var font_type =  document.forms["HW05-P01_form"].elements["font_type"].value;
+               var col_choice_red =  document.forms["HW05-P01_form"].elements["col_choice_red"].checked;
+               var col_choice_blue =  document.forms["HW05-P01_form"].elements["col_choice_blue"].checked;
+               var col_choice_yellow =  document.forms["HW05-P01_form"].elements["col_choice_yellow"].checked;
+               var text_un_it =  get_selected_radio_value("text_un_it");
+              
+               if (input_text == "" || font_type == "" || text_un_it == null ||
+                   (col_choice_red == false && col_choice_blue == false && col_choice_yellow == false))
+                   
+                 {
+                 
+                  $("#disp_text").fadeTo("slow", 0);
+                 
+                  if (input_text == "") {$("#warning1").fadeTo("slow", 1);} else {$("#warning1").fadeTo("slow", 0);}
+                  if (font_type == "") {$("#warning2").fadeTo("slow", 1);} else {$("#warning2").fadeTo("slow", 0);}
+                  if (col_choice_red == false && col_choice_blue == false && col_choice_yellow == false)
+                      {$("#warning3").fadeTo("slow", 1);} else {$("#warning3").fadeTo("slow", 0);}
+                  if (text_un_it == null) {$("#warning4").fadeTo("slow", 1);} else {$("#warning4").fadeTo("slow", 0);}
+
+                  }
+              
+               else
+               
+                 {
+                 
+                  $("#warning1").fadeTo("slow", 0);
+                  $("#warning2").fadeTo("slow", 0);
+                  $("#warning3").fadeTo("slow", 0);
+                  $("#warning4").fadeTo("slow", 0);
+                
+                  document.getElementById("disp_text").innerHTML = input_text;
+                 
+                  // Set Font Type
+                 
+                  if (font_type == "Serif")
+                    {
+                     document.getElementById("disp_text").style.fontFamily = "serif";
+                     document.getElementById("disp_text").style.fontWeight = "normal";
+                    }
+                    
+                  else if (font_type == "Serif Bold")
+                    {
+                     document.getElementById("disp_text").style.fontFamily = "serif";
+                     document.getElementById("disp_text").style.fontWeight = "bold";
+                    }
+                    
+                  else if (font_type == "Sans Serif")
+                    {
+                     document.getElementById("disp_text").style.fontFamily = "sans-serif";
+                     document.getElementById("disp_text").style.fontWeight = "normal";
+                    }
+                    
+                  else if (font_type == "Sans Serif Bold")
+                    {
+                     document.getElementById("disp_text").style.fontFamily = "sans-serif";
+                     document.getElementById("disp_text").style.fontWeight = "bold";
+                    }
+                 
+                 
+                  // Set Font Color
+                 
+                  if (col_choice_red && col_choice_blue && col_choice_yellow)
+                  
+                    {document.getElementById("disp_text").style.color = "black";}
+                 
+                  else if (col_choice_red && col_choice_blue)
+                  
+                    {document.getElementById("disp_text").style.color = "purple";}          
+                 
+                  else if (col_choice_red && col_choice_yellow)
+                  
+                    {document.getElementById("disp_text").style.color = "orange";}  
+                                      
+                  else if (col_choice_blue && col_choice_yellow)
+                  
+                    {document.getElementById("disp_text").style.color = "green";}  
+                                      
+                  else if (col_choice_red)
+                  
+                    {document.getElementById("disp_text").style.color = "red";}
+                    
+                  else if (col_choice_blue)
+                  
+                    {document.getElementById("disp_text").style.color = "blue";}
+                    
+                  else if (col_choice_yellow)
+                  
+                    {document.getElementById("disp_text").style.color = "yellow";}  
+                 
+                  $("#disp_text").fadeTo("slow", 1);
+                 
+                  // Set underlining and / or italicization
+      
+                  if (text_un_it == "text_ul")
+                    {
+                     document.getElementById("disp_text").style.textDecoration = "underline";
+                     document.getElementById("disp_text").style.fontStyle = "normal";
+                     }
+                  else if (text_un_it == "text_it")
+                    {
+                     document.getElementById("disp_text").style.textDecoration = "none";
+                     document.getElementById("disp_text").style.fontStyle = "italic";
+                     }
+                  else if (text_un_it == "text_ul_it")
+                    {
+                     document.getElementById("disp_text").style.textDecoration = "underline";
+                     document.getElementById("disp_text").style.fontStyle = "italic";
+                     }
+                  else
+                    {
+                     document.getElementById("disp_text").style.textDecoration = "none";
+                     document.getElementById("disp_text").style.fontStyle = "normal";
+                     }
+                 
+
+                 
+                 }
+              
+              
+              
+               return false;
+              
+               }
+
+
+
+        </script>
+
+        <form name="HW05-P01_form">
+        
+          <table class="tg">
+          
+            <tr>
+              <td colspan="2"><b>Enter Text to Display</b></td>
+            </tr>
+            <tr>
+              <td colspan="2"><input type="text" id="input_text" size="10" style="text-align:left"></td>
+            </tr>
+            <tr>
+              <td colspan="2"><span id="warning1" style ="color: red; opacity:0">Insert Text to Display</span></td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Font Type - Select One</b></td>
+            </tr>           
+            <tr>
+              <td colspan="2">
+                <select id="font_type" size="4">
+                  <option>Serif</option>
+                  <option>Serif Bold</option>
+                  <option>Sans Serif</option>
+                  <option>Sans Serif Bold</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"><span id="warning2" style ="color: red; opacity:0">Choose Font Type</span></td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Color - Choose at least one.</b></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id="col_choice_red" name="col_choice_red"></td>
+              <td><label for="col_choice_red">Red</label></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id="col_choice_blue" name="col_choice_blue"></td>
+              <td><label for="col_choice_blue">Blue</label></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" id="col_choice_yellow" name="col_choice_yellow"></td>
+              <td><label for="col_choice_yellow">Yellow</label></td>
+            </tr>
+            <tr>
+              <td colspan="2"><span id="warning3" style ="color: red; opacity:0">Select at least one color.</span></td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2"><b>Underlined / Italicized - Activate One</b></td>
+            </tr>
+            <tr>
+              <td><input type="radio" id="text_ul" name="text_un_it" value="text_ul"></td>
+              <td><label for="text_bold">Underline</label></td>
+            </tr>
+            <tr>
+              <td><input type="radio" id="text_it" name="text_un_it" value="text_it"></td>
+              <td><label for="text_ital">Italicized</label></td>
+            </tr>
+            <tr>
+              <td><input type="radio" id="text_ul_it" name="text_un_it" value="text_ul_it"></td>
+              <td><label for="text_bold_ital">Underlined and Italicized</label></td>
+            </tr>
+            <tr>
+              <td><input type="radio" id="text_no_ul_it" name="text_un_it" value="text_no_ul_it"></td>
+              <td><label for="text_no_un_it">Neither Underlined nor Italicized</label></td>
+            </tr>
+            <tr>
+              <td colspan="2"><span id="warning4" style ="color: red; opacity:0">Select one option above.</span></td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2"><button onclick="return show_text()">Display Text Below</button></td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+          </table>
+          
+        </form>
+
+
+        <span id="disp_text" style ="opacity:0">&nbsp;</span>
+
 
       </article>
 
     </section>
-
+    
     <footer>
       
       <h4>Christopher Bulkley - Logston</h4>
