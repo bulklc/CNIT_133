@@ -6,6 +6,9 @@
     <meta charset="utf-8">
     <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 5 Part 2">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
   </head>
   
   <body>
@@ -39,9 +42,47 @@
           <li style ="opacity:0"></li>
         </ul>
 
-        <h4>Assignment Info</h4>
+        <script>
+        
+          function list_launch(select_list_id)
+          
+            {
+            
 
-          aaa
+            
+             var list_url =  document.getElementById(select_list_id).value;
+           
+             if (list_url != "")
+             
+               {
+                
+                window.open(list_url); 
+                
+                if (select_list_id=='url_opt_B') {$("#warning1").fadeTo("slow", 0);}
+                
+                }
+             
+             else if (select_list_id=='url_opt_B') {$("#warning1").fadeTo("slow", 1);}
+ 
+ 
+             }
+
+        
+        </script>
+
+        <h4>Research West African Countries - Select from list below to open.</h4>
+        <select style="width:300pt" id="url_opt_A" onchange="list_launch('url_opt_A')">
+          <option></option>
+        </select>
+        <br><br>
+        <h4>Research California Counties - Select from list below and click button to open.</h4>
+        <select style="width:300pt" id="url_opt_B">
+          <option></option>
+        </select>
+        <br><br>
+        <button onclick="list_launch('url_opt_B')">Launch URL</button>&nbsp;&nbsp;&nbsp;
+        <span id="warning1" style="color:red; opacity:0">Please select item from drop down list.</span>
+
 
       </article>
 
@@ -54,6 +95,67 @@
       <h6>Last Updated 2020 - November - 7</h6>
 
     </footer>
+
+        <script>
+                           
+          var url_list_A = ['Benin',
+                            'Burkina_Faso',
+                            'Cape_Verde',
+                            'The_Gambia',
+                            'Ghana',
+                            'Guinea',
+                            'Guinea-Bissau',
+                            'Ivory_Coast',
+                            'Liberia',
+                            'Mali',
+                            'Mauritania',
+                            'Niger',
+                            'Nigeria',
+                            'Senegal',
+                            'Sierra_Leone',
+                            'Togo'];
+        
+          var url_list_B = ['Alameda', 
+                            'Alpine',
+                            'Amador',
+                            'Butte',
+                            'Calaveras',
+                            'Colusa',
+                            'Contra_Costa',   
+                            'Del_Norte'];
+
+         
+          dd_select_list_populator("url_opt_A", url_list_A);
+          dd_select_list_populator("url_opt_B", url_list_B);
+          
+
+          function dd_select_list_populator(select_list_id, list_of_options)
+          
+            {
+
+             var select_list_object = document.getElementById(select_list_id);
+
+             for(var ii = 0; ii < list_of_options.length; ii++)
+          
+               {
+            
+                var option = list_of_options[ii];
+                var option_element = document.createElement("option");
+                option_element.textContent = 'https://en.wikipedia.org/wiki/'.concat(option);
+                if (select_list_id == "url_opt_B")
+                
+                  {option_element.textContent = option_element.textContent.concat('_County,_California');}
+                
+                option_element.value = option_element.textContent;
+                select_list_object.appendChild(option_element);
+             
+                }
+        
+            
+             }
+
+        
+        </script>
 
   </body>
 
