@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 5 Part 3">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../scripts/misc_functions.js"></script>
+  
   </head>
   
   <body>
@@ -39,9 +43,116 @@
           <li style ="opacity:0"></li>
         </ul>
 
-        <h4>Assignment Info</h4>
+        <script>
+                               
+                
+          function show_state_info()
+          
+            {
+            
 
-          aaa
+             var chosen_state =  document.getElementById("input_state").value.toUpperCase();
+            
+             var state_index = -1;
+         
+             for (var ii = 0; ii < state_info_table.length; ii++) 
+            
+               {
+           
+                if (chosen_state == state_info_table[ii][0].toUpperCase()) {state_index = ii;} 
+                if (chosen_state == state_info_table[ii][1].toUpperCase()) {state_index = ii;}
+                
+                }
+                
+             if (state_index > -1) 
+             
+                {  
+
+
+                 $("#warning1").fadeTo("slow", 0);
+                 $("#row1l").fadeTo("slow", 1);
+                 $("#row2l").fadeTo("slow", 1);
+                 $("#row3l").fadeTo("slow", 1);
+                 $("#row4l").fadeTo("slow", 1);
+                 
+                 if (document.getElementById("row1l").style.opacity==1)
+                 
+                   {
+                 
+                    $("#row1r").fadeOut(function() {$(this).text(state_info_table[state_index][0]).fadeTo("slow", 1);});
+                    $("#row2r").fadeOut(function() {$(this).text(state_info_table[state_index][1]).fadeTo("slow", 1);});
+                    $("#row3r").fadeOut(function() {$(this).text(state_info_table[state_index][2]).fadeTo("slow", 1);});
+                    $("#row4r").fadeOut(function() {
+                    
+                            $(this).text(thsnd_sep(state_info_table[state_index][3])).fadeTo("slow", 1);
+                            
+                                                    });
+                 
+                    }
+                 
+                 else
+                 
+                   {
+                   
+                    
+                    $("#row1r").text(state_info_table[state_index][0]).fadeTo("slow", 1);
+                    $("#row2r").text(state_info_table[state_index][1]).fadeTo("slow", 1);
+                    $("#row3r").text(state_info_table[state_index][2]).fadeTo("slow", 1);
+                    $("#row4r").text(thsnd_sep(state_info_table[state_index][3])).fadeTo("slow", 1);
+                   
+                   }
+                 
+                 
+                 }
+                
+             else
+             
+                {  
+
+                 $("#warning1").fadeTo("slow", 1);
+                 $("#row1l").fadeTo("slow", 0);
+                 $("#row2l").fadeTo("slow", 0);
+                 $("#row3l").fadeTo("slow", 0);
+                 $("#row4l").fadeTo("slow", 0);
+                 
+                 $("#row1r").fadeTo("slow", 0);
+                 $("#row2r").fadeTo("slow", 0);
+                 $("#row3r").fadeTo("slow", 0);
+                 $("#row4r").fadeTo("slow", 0);
+                 
+                 }                            
+                
+             }
+             
+        </script>
+
+        <h4>Enter State Below.</h4>
+
+        <input type="text" id="input_state" size="10" style="text-align:left; width:105pt">
+        <br><br>
+        <button onclick="show_state_info()" style="width:105pt">State Info</button>&nbsp;&nbsp;&nbsp;
+        <br><br>
+        <span id="warning1" style="color: red; opacity:0"></span>
+        <br><br>
+        <table>
+        <tr>
+        <td style="text-align:right"><span id="row1l" style="opacity:0"><b>State Abbreviation:</b></span></td>
+        <td><span id="row1r" style="opacity:0"></span></td>
+        </tr>
+        <tr>
+        <td style="text-align:right"><span id="row2l" style="opacity:0"><b>State Name:</b></span></td>
+        <td><span id="row2r" style="opacity:0"></span></td>
+        </tr>
+        <tr>
+        <td style="text-align:right"><span id="row3l" style="opacity:0"><b>State Capital:</b></span></td>
+        <td><span id="row3r" style="opacity:0"></span></td>
+        </tr>
+        <tr>
+        <td style="text-align:right"><span id="row4l" style="opacity:0"><b>State Population:</b></span></td>
+        <td><span id="row4r" style="opacity:0"></span></td>
+        </tr>
+        </table>
+        <span id="disp_text" style="opacity:0"></span>
 
       </article>
 
@@ -51,9 +162,37 @@
       
       <h4>Christopher Bulkley - Logston</h4>
       <h5>San Francisco City College - Fall 2020</h5>
-      <h6>Last Updated 2020 - November - 7</h6>
+      <h6>Last Updated 2020 - November - 8</h6>
 
     </footer>
+
+        <script>
+                    
+          var state_info_table= [['AL', 'Alabama', 'Montgomery', 4887871],
+                                 ['AK', 'Alaska', 'Juneau', 737438],
+                                 ['AZ', 'Arizona', 'Phoenix', 7171646],
+                                 ['AR', 'Arkansas', 'Little Rock', 3010825],
+                                 ['CA', 'California', 'Sacramento', 39557045],
+                                 ['CO', 'Colorado', 'Denver', 5694564]];                              
+
+          
+          var warning_text;
+          
+          warning_text = "Please enter the state name or abbreviation<br>"
+          warning_text += "for one of the following available state records:<br><br>"
+                     
+          for (var ii = 0; ii < state_info_table.length; ii++)
+          
+            {
+            
+               warning_text += state_info_table[ii][1].concat(", ");
+               warning_text += state_info_table[ii][0].concat("<br>");
+            
+             }           
+            
+          document.getElementById("warning1").innerHTML = warning_text;         
+                          
+        </script>
 
   </body>
 
