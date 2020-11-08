@@ -52,7 +52,7 @@
             
              var list_url =  document.getElementById(select_list_id).value;
            
-             if (list_url != "")
+             if (list_url.length > 1)
              
                {
                 
@@ -72,12 +72,12 @@
 
         <h4>Research West African Countries - Select from list below to open.</h4>
         <select style="width:300pt" id="url_opt_A" onchange="list_launch('url_opt_A')">
-          <option></option>
+          <option>&nbsp;</option>
         </select>
         <br><br>
         <h4>Research California Counties - Select from list below and click button to open.</h4>
         <select style="width:300pt" id="url_opt_B">
-          <option></option>
+          <option>&nbsp;</option>
         </select>
         <br><br>
         <button onclick="list_launch('url_opt_B')">Launch URL</button>&nbsp;&nbsp;&nbsp;
