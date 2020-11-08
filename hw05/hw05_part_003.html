@@ -70,6 +70,7 @@
 
 
                  $("#warning1").fadeTo("slow", 0);
+                 $("#row0").fadeTo("slow", 1);    
                  $("#row1l").fadeTo("slow", 1);
                  $("#row2l").fadeTo("slow", 1);
                  $("#row3l").fadeTo("slow", 1);
@@ -79,6 +80,7 @@
                  
                    {
                  
+              
                     $("#row1r").fadeOut(function() {$(this).text(state_info_table[state_index][0]).fadeTo("slow", 1);});
                     $("#row2r").fadeOut(function() {$(this).text(state_info_table[state_index][1]).fadeTo("slow", 1);});
                     $("#row3r").fadeOut(function() {$(this).text(state_info_table[state_index][2]).fadeTo("slow", 1);});
@@ -94,7 +96,6 @@
                  
                    {
                    
-                    
                     $("#row1r").text(state_info_table[state_index][0]).fadeTo("slow", 1);
                     $("#row2r").text(state_info_table[state_index][1]).fadeTo("slow", 1);
                     $("#row3r").text(state_info_table[state_index][2]).fadeTo("slow", 1);
@@ -110,6 +111,8 @@
                 {  
 
                  $("#warning1").fadeTo("slow", 1);
+                 
+                 $("#row0").fadeTo("slow", 0);
                  $("#row1l").fadeTo("slow", 0);
                  $("#row2l").fadeTo("slow", 0);
                  $("#row3l").fadeTo("slow", 0);
@@ -134,23 +137,25 @@
         <br><br>
         <span id="warning1" style="color: red; opacity:0"></span>
         <br><br>
+        <span id="row0" style="opacity:0">Thank you for your inquiry. Here is the information you requested:</span>
+        <br><br>
         <table>
-        <tr>
-        <td style="text-align:right"><span id="row1l" style="opacity:0"><b>State Abbreviation:</b></span></td>
-        <td><span id="row1r" style="opacity:0"></span></td>
-        </tr>
-        <tr>
-        <td style="text-align:right"><span id="row2l" style="opacity:0"><b>State Name:</b></span></td>
-        <td><span id="row2r" style="opacity:0"></span></td>
-        </tr>
-        <tr>
-        <td style="text-align:right"><span id="row3l" style="opacity:0"><b>State Capital:</b></span></td>
-        <td><span id="row3r" style="opacity:0"></span></td>
-        </tr>
-        <tr>
-        <td style="text-align:right"><span id="row4l" style="opacity:0"><b>State Population:</b></span></td>
-        <td><span id="row4r" style="opacity:0"></span></td>
-        </tr>
+          <tr>
+            <td style="text-align:right"><span id="row1l" style="opacity:0"><b>State Abbreviation:</b></span></td>
+            <td><span id="row1r" style="opacity:0"></span></td>
+          </tr>
+          <tr>
+            <td style="text-align:right"><span id="row2l" style="opacity:0"><b>State Name:</b></span></td>
+            <td><span id="row2r" style="opacity:0"></span></td>
+          </tr>
+          <tr>
+            <td style="text-align:right"><span id="row3l" style="opacity:0"><b>State Capital:</b></span></td>
+            <td><span id="row3r" style="opacity:0"></span></td>
+          </tr>
+          <tr>
+            <td style="text-align:right"><span id="row4l" style="opacity:0"><b>State Population:</b></span></td>
+            <td><span id="row4r" style="opacity:0"></span></td>
+          </tr>
         </table>
         <span id="disp_text" style="opacity:0"></span>
 
