@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
+    <title>CNIT133-CBL-HW06-P01</title>
+    <meta charset="utf-8">
+    <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 6 Part 1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+    <style>
+    
+        textarea {width: 153px;height: 22px;}
+        
+
+    
+    </style>
+  
+  </head>
+  
+  <body>
+    
+    <section>
+
+      <h1>CNIT 133 - JavaScript, jQuery and AJAX</h1>
+      <h2>Homework 6 - Objects</h2>
+
+      <nav>  
+        <h4>Assignments</h4>
+        <ul>
+          <li><a href="../hw01.html">Homework 1 - Home Page</a></li>
+          <li><a href="../hw02/hw02.html">Homework 2</a></li>
+          <li><a href="../hw03/hw03.html">Homework 3</a></li>
+          <li><a href="../hw04/hw04.html">Homework 4</a></li>
+          <li><a href="../hw05/hw05.html">Homework 5</a></li>
+          <li><b>Homework 6</b></li>
+          <li><a href="../hw07/hw07.html">Homework 7</a></li>
+          <li><a href="../hw08/hw08.html">Homework 8</a></li>
+        </ul>
+      </nav>
+  
+      <article>
+        <h4>Assignment Navigation</h4>
+        <ul>
+          <li><a href="hw06.html">Part 0 - Assignment Home Page</a></li>
+          <li><b>Part 1 - Math Processing</b></li>
+          <li><a href="hw06_part_002.html">Part 2 - Text Search</a></li>
+          <li><a href="hw06_part_003.html">Part 3 - Phone Number Entry</a></li>
+          <li style ="opacity:0"></li>
+        </ul>
+
+        <script>
+    
+          function func_process() 
+          
+            {
+            
+             var input_text = document.forms["HW06-P01_form"].elements["input_number"].value;
+             var input_number
+            
+             if (isNaN(input_text) || input_text.includes(".") == false )
+             
+               {
+               
+                input_number = 0.1;
+
+                             
+                }
+            
+             else
+             
+               {
+               
+                input_number = parseFloat(input_text);
+               
+               }
+            
+            
+             if (input_number.toString().split(".")[1].length < 4)
+             
+               {
+               
+                $("#warning1").fadeTo("slow", 1);
+                $("#original_number_label").fadeTo("slow", 0.1);
+                $("#original_input_number").fadeTo("slow", 0.1); 
+                $("#rounded_int_label").fadeTo("slow", 0.1);
+                $("#rounded_int").fadeTo("slow", 0.1);
+                $("#sqrt_rounded_label").fadeTo("slow", 0.1);
+                $("#sqrt_rounded").fadeTo("slow", 0.1);               
+                $("#tenths_rounded_label").fadeTo("slow", 0.1);
+                $("#tenths_rounded").fadeTo("slow", 0.1);     
+                $("#hundredths_rounded_label").fadeTo("slow", 0.1);
+                $("#hundredths_rounded").fadeTo("slow", 0.1);     
+                $("#thousandths_rounded_label").fadeTo("slow", 0.1);
+                $("#thousandths_rounded").fadeTo("slow", 0.1);                 
+                         
+                document.getElementById("original_input_number").innerHTML = "";         
+                document.getElementById("rounded_int").innerHTML = "";                            
+                document.getElementById("sqrt_rounded").innerHTML = "";                            
+                document.getElementById("tenths_rounded").innerHTML = "";
+                document.getElementById("hundredths_rounded").innerHTML = "";                                
+                document.getElementById("thousandths_rounded").innerHTML = "";          
+                       
+                            
+                }
+             
+             else
+             
+               {
+               
+                $("#warning1").fadeTo("slow", 0);
+                $("#original_number_label").fadeTo("slow", 1);
+                $("#original_input_number").fadeTo("slow", 1);                
+                $("#rounded_int_label").fadeTo("slow", 1);
+                $("#rounded_int").fadeTo("slow", 1);
+                $("#sqrt_rounded_label").fadeTo("slow", 1);
+                $("#sqrt_rounded").fadeTo("slow", 1);               
+                $("#tenths_rounded_label").fadeTo("slow", 1);
+                $("#tenths_rounded").fadeTo("slow", 1);     
+                $("#hundredths_rounded_label").fadeTo("slow", 1);
+                $("#hundredths_rounded").fadeTo("slow", 1);     
+                $("#thousandths_rounded_label").fadeTo("slow", 1);
+                $("#thousandths_rounded").fadeTo("slow", 1);    
+               
+                document.getElementById("original_input_number").innerHTML = input_number;
+                document.getElementById("rounded_int").innerHTML = Math.round(input_number);
+                document.getElementById("sqrt_rounded").innerHTML = Math.round(Math.sqrt(input_number));
+                document.getElementById("tenths_rounded").innerHTML = input_number.toFixed(1);
+                document.getElementById("hundredths_rounded").innerHTML = input_number.toFixed(2);         
+                document.getElementById("thousandths_rounded").innerHTML = input_number.toFixed(3);    
+               
+               }
+            
+             return false;
+            
+             }
+    
+
+        </script>
+
+        <form name="HW06-P01_form">
+        
+          <table>
+          
+            <tr>
+              <td style="text-align:right"><label id = "input_number_label" style="opacity:1.0" for="input_number"><strong>Enter Number to be Processed:</strong></label></td>
+              <td><input type="text" id="input_number" size="17"></td>
+            </tr>
+            <tr>
+              <td style="text-align:right"><label id = "original_number_label" style="opacity:0.1" for="original_input_number"><strong>Original Input Number:</strong></label></td>
+              <td><textarea readOnly id="original_input_number" size="10" style="opacity:0.1"></textarea></td>
+            </tr>
+            <tr>
+              <td style="text-align:right"><label id = "rounded_int_label" style="opacity:0.1" for="rounded_int"><strong>Nearest Integer:</strong></label></td>
+              <td><textarea readOnly type="number" id="rounded_int" size="10" style="opacity:0.1"></textarea></td>
+            </tr>
+            <tr>
+              <td style="text-align:right"><label id = "sqrt_rounded_label" style="opacity:0.1" for="sqrt_rounded"><strong>Nearest Integer of Square Root:</strong></label></td>
+              <td><textarea readOnly type="number" id="sqrt_rounded" size="10" style="opacity:0.1"></textarea></td>
+            </tr>
+            <tr>
+              <td style="text-align:right"><label id = "tenths_rounded_label" style="opacity:0.1" for="tenths_rounded"><strong>Nearest Tenths Value:</strong></label></td>
+              <td><textarea readOnly type="number" id="tenths_rounded" size="10" style="opacity:0.1"></textarea></td>
+            </tr>
+            <tr>
+              <td style="text-align:right"><label id = "hundredths_rounded_label" style="opacity:0.1" for="hundredths_rounded"><strong>Nearest Hundredths Value:</strong></label></td>
+              <td><textarea readOnly type="number" id="hundredths_rounded" size="10" style="opacity:0.1"></textarea></td>
+            </tr>
+            <tr>
+              <td style="text-align:right"><label id = "thousandths_rounded_label" style="opacity:0.1" for="thousandths_rounded"><strong>Nearest Thousandths Value:</strong></label></td>
+             <td><textarea readOnly type="number" id="thousandths_rounded" size="10" style="opacity:0.1"></textarea></td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align:center"><button onclick="return func_process()">Click to Process</button></td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align:center"><span id="warning1" style ="color: red; opacity:0">Please enter numerical value with <br> at least four digits past the decimal.</span></td>
+            </tr>
+           
+          </table>
+          
+        </form>
+
+
+
+      </article>
+
+    </section>
+    
+    <footer>
+      
+      <h4>Christopher Bulkley - Logston</h4>
+      <h5>San Francisco City College - Fall 2020</h5>
+      <h6>Last Updated 2020 - November - 19</h6>
+
+    </footer>
+
+  </body>
+
+</html>
