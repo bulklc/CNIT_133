@@ -194,37 +194,32 @@
         </script>
 
         <form name="HW06-P02_form">
-        
-          
-          <label id = "master_string_label" for="master_string">
-            
-            <h4>Given Passage</h4>
-            <h6>Enter string in which quantity of occurrences of search character entered below will be checked:</h6>
+         
+          <h4>Given Passage</h4>
+          <h6>
+            <label id = "master_string_label" for="master_string">Enter string in which quantity of occurrences of search character entered below will be checked:</label>
+          </h6>
               
-          </label>
-            
           <textarea id="master_string" rows="3"></textarea><br><br>
             
-   
-          <label id = "search_string_label" for="search_string">
-          
-            <h4>Search Character</h4>
-          
-            <h6>Enter single character whose occurrence quantity within passage given above will be checked:</h6>
-            
-          </label>
-          
+          <h4>Search Character</h4>
+          <h6>       
+            <label id = "search_string_label" for="search_string">Enter single character whose occurrence quantity within passage given above will be checked:</label>
+          </h6>
+
           <input type="text" id="search_string" size="11"><br><br><br>
           
           <button onclick="return func_search()">Click to Search</button><br><br>
           
-          <label id = "occurrence_qty_label" for="occurrence_qty">
           
           
-            <h4 id="occurrence_qty_label_h4" style="opacity:0.1">Result</h4>
-            <h6 id="occurrence_qty_label_h6" style="opacity:0.1">Quantity of occurrences of search character in given passage:</h6>
+          
+          <h4 id="occurrence_qty_label_h4" style="opacity:0.1">Result</h4>
+          <h6 id="occurrence_qty_label_h6" style="opacity:0.1">
+            <label id = "occurrence_qty_label" for="occurrence_qty">Quantity of occurrences of search character in given passage:</label>
+          </h6>
             
-          </label>
+          
 
           <input type="text" readOnly id="occurrence_qty" size="11" style ="opacity:0.1"><br><br>
 
