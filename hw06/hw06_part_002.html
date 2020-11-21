@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
+    <title>CNIT133-CBL-HW06-P02</title>
+    <meta charset="utf-8">
+    <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 6 Part 2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+    <style>
+    
+        textarea {width: 450px}
+        
+
+    
+    </style>
+  
+  </head>
+  
+  <body>
+    
+    <section>
+
+      <h1>CNIT 133 - JavaScript, jQuery and AJAX</h1>
+      <h2>Homework 6 - Objects</h2>
+
+      <nav>  
+        <h4>Assignments</h4>
+        <ul>
+          <li><a href="../hw01.html">Homework 1 - Home Page</a></li>
+          <li><a href="../hw02/hw02.html">Homework 2</a></li>
+          <li><a href="../hw03/hw03.html">Homework 3</a></li>
+          <li><a href="../hw04/hw04.html">Homework 4</a></li>
+          <li><a href="../hw05/hw05.html">Homework 5</a></li>
+          <li><b>Homework 6</b></li>
+          <li><a href="../hw07/hw07.html">Homework 7</a></li>
+          <li><a href="../hw08/hw08.html">Homework 8</a></li>
+        </ul>
+      </nav>
+  
+      <article>
+        <h4>Assignment Navigation</h4>
+        <ul>
+          <li><a href="hw06.html">Part 0 - Assignment Home Page</a></li>
+          <li><a href="hw06_part_001.html">Part 1 - Math Processing</a></li>
+          <li><b>Part 2 - Text Search</b></li>
+          <li><a href="hw06_part_003.html">Part 3 - Phone Number Entry</a></li>
+          <li style ="opacity:0"></li>
+        </ul>
+
+        <script>
+    
+          var window_error_index = 0;
+    
+          var error_window;
+    
+          function func_search() 
+          
+            {
+
+             if (window_error_index > 0)
+                   
+               {
+
+                if (error_window.closed == false) {error_window.close()};
+                      
+                }
+
+             var master_string = document.forms["HW06-P02_form"].elements["master_string"].value;
+             var search_string = document.forms["HW06-P02_form"].elements["search_string"].value;
+             var occ_qty = 0;
+             
+             var window_text;
+             
+             if (search_string.length == 1)
+             
+               {
+             
+             
+                for (var ii = 0; ii < master_string.length; ii++) 
+             
+             
+                  {
+               
+                   if (master_string.charAt(ii).toUpperCase()==search_string.toUpperCase())
+                
+                     {
+                
+                      occ_qty += 1;
+                
+                     }
+                
+                   }
+             
+
+             
+                if (occ_qty == 0)
+             
+                  {
+               
+                   $("#occurrence_qty_label_h4").fadeTo("slow", 0.1);
+                   $("#occurrence_qty_label_h6").fadeTo("slow", 0.1);
+                   $("#occurrence_qty").fadeTo("slow", 0.1);
+                   $("#warning1").fadeTo("slow", 0);
+               
+                   document.forms["HW06-P02_form"].elements["occurrence_qty"].value = "";
+               
+                   window_text = 'Search character not found in text string!<br><br>';
+                   window_text += search_string + '<br>';
+
+                   tt=140;//screen.height+150;
+                   ll=screen.width-350;
+                   
+                   //if (window_error_index > 0)
+                   
+                   //  {
+
+                   //   if (error_window.closed == false) {error_window.close()};
+                      
+                   //   }
+    
+    
+                   error_window = window.open("", "error_window", 'height=100, width=300, left='+ll+', top='+tt);
+     
+                   error_window.document.write(window_text);
+                   error_window.document.title = "HW6 P2 MESSAGE";
+               
+               
+                   window_error_index += 1;
+               
+                   }
+                   
+                else
+                
+                  {   
+                  
+                   $("#occurrence_qty_label_h4").fadeTo("slow", 1);
+                   $("#occurrence_qty_label_h6").fadeTo("slow", 1);
+                   $("#occurrence_qty").fadeTo("slow", 1);
+                   $("#warning1").fadeTo("slow", 0);
+             
+                   document.forms["HW06-P02_form"].elements["occurrence_qty"].value = occ_qty;
+                   
+                   
+                   }
+             
+             
+                }
+             
+             else
+             
+               {
+             
+                $("#occurrence_qty_label_h4").fadeTo("slow", 0.1);
+                $("#occurrence_qty_label_h6").fadeTo("slow", 0.1);
+                $("#occurrence_qty").fadeTo("slow", 0.1);
+                $("#warning1").fadeTo("slow", 1);
+                document.forms["HW06-P02_form"].elements["occurrence_qty"].value = "";
+             
+                }
+             
+             return false;
+
+             }
+    
+
+        </script>
+
+        <form name="HW06-P02_form">
+        
+          
+          <label id = "master_string_label" for="master_string">
+            
+            <h4>Given Passage</h4>
+            <h6>Enter string in which quantity of occurrences of search character entered below will be checked:</h6>
+              
+          </label>
+            
+          <textarea id="master_string" rows="3"></textarea><br><br>
+            
+   
+          <label id = "search_string_label" for="search_string">
+          
+            <h4>Search Character</h4>
+          
+            <h6>Enter single character whose occurrence quantity within passage given above will be checked:</h6>
+            
+          </label>
+          
+          <input type="text" id="search_string" size="11"><br><br><br>
+          
+          <button onclick="return func_search()">Click to Search</button><br><br>
+          
+          <label id = "occurrence_qty_label" for="occurrence_qty">
+          
+          
+            <h4 id="occurrence_qty_label_h4" style="opacity:0.1">Result</h4>
+            <h6 id="occurrence_qty_label_h6" style="opacity:0.1">Quantity of occurrences of search character in given passage:</h6>
+            
+          </label>
+
+          <input type="text" readOnly id="occurrence_qty" size="11" style ="opacity:0.1"><br><br>
+
+          <span id="warning1" style ="color: red; opacity:0.1">Please enter a single character in the second input box above.</span>
+
+
+  
+        </form>
+
+
+
+      </article>
+
+    </section>
+    
+    <footer>
+      
+      <h4>Christopher Bulkley - Logston</h4>
+      <h5>San Francisco City College - Fall 2020</h5>
+      <h6>Last Updated 2020 - November - 21</h6>
+
+    </footer>
+
+  </body>
+
+</html>
