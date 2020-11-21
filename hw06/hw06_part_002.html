@@ -74,7 +74,7 @@
              
              var window_text;
              
-             if (search_string.length == 1)
+             if (search_string.length == 1 && master_string.replace(/\s/g, '').length > 0)
              
                {
              
@@ -104,7 +104,8 @@
                    $("#occurrence_qty_label_h6").fadeTo("slow", 0.1);
                    $("#occurrence_qty").fadeTo("slow", 0.1);
                    $("#warning1").fadeTo("slow", 0);
-               
+                   $("#warning2").fadeTo("slow", 0);
+                                  
                    document.forms["HW06-P02_form"].elements["occurrence_qty"].value = "";
                
                    window_text = 'Search character not found in text string!<br><br>';
@@ -112,16 +113,7 @@
 
                    tt=140;//screen.height+150;
                    ll=screen.width-350;
-                   
-                   //if (window_error_index > 0)
-                   
-                   //  {
-
-                   //   if (error_window.closed == false) {error_window.close()};
                       
-                   //   }
-    
-    
                    error_window = window.open("", "error_window", 'height=100, width=300, left='+ll+', top='+tt);
      
                    error_window.document.write(window_text);
@@ -140,7 +132,8 @@
                    $("#occurrence_qty_label_h6").fadeTo("slow", 1);
                    $("#occurrence_qty").fadeTo("slow", 1);
                    $("#warning1").fadeTo("slow", 0);
-             
+                   $("#warning2").fadeTo("slow", 0);
+                                
                    document.forms["HW06-P02_form"].elements["occurrence_qty"].value = occ_qty;
                    
                    
@@ -156,8 +149,40 @@
                 $("#occurrence_qty_label_h4").fadeTo("slow", 0.1);
                 $("#occurrence_qty_label_h6").fadeTo("slow", 0.1);
                 $("#occurrence_qty").fadeTo("slow", 0.1);
-                $("#warning1").fadeTo("slow", 1);
-                document.forms["HW06-P02_form"].elements["occurrence_qty"].value = "";
+                
+                if (master_string.replace(/\s/g, '').length == 0)
+                
+                  {
+                  
+                   $("#warning1").fadeTo("slow", 1);
+                  
+                   }
+                   
+                 else
+                 
+                   {
+                  
+                    $("#warning1").fadeTo("slow", 0);
+                  
+                    }
+                    
+                if (search_string.length != 1)
+                
+                  {
+                  
+                   $("#warning2").fadeTo("slow", 1);
+                   
+                   }
+                   
+                 else
+                 
+                   {
+                  
+                    $("#warning2").fadeTo("slow", 0);
+                   
+                    };
+                   
+                 document.forms["HW06-P02_form"].elements["occurrence_qty"].value = "";
              
                 }
              
@@ -203,8 +228,8 @@
 
           <input type="text" readOnly id="occurrence_qty" size="11" style ="opacity:0.1"><br><br>
 
-          <span id="warning1" style ="color: red; opacity:0.1">Please enter a single character in the second input box above.</span>
-
+          <span id="warning1" style ="color: red; opacity:0">Please enter some text in the first input field above.</span><br>
+          <span id="warning2" style ="color: red; opacity:0">Please enter a single character in the second input field above.</span>
 
   
         </form>
