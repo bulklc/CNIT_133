@@ -59,25 +59,7 @@
              var input_text = document.forms["HW06-P01_form"].elements["input_number"].value;
              var input_number
             
-             if (isNaN(input_text) || input_text.includes(".") == false )
-             
-               {
-               
-                input_number = 0.1;
-
-                             
-                }
-            
-             else
-             
-               {
-               
-                input_number = parseFloat(input_text);
-               
-               }
-            
-            
-             if (input_number.toString().split(".")[1].length < 4)
+             if (isNaN(input_text) || input_text.includes(".") == false || input_text.split(".")[1].length < 4)
              
                {
                
@@ -101,8 +83,7 @@
                 document.getElementById("tenths_rounded").innerHTML = "";
                 document.getElementById("hundredths_rounded").innerHTML = "";                                
                 document.getElementById("thousandths_rounded").innerHTML = "";          
-                       
-                            
+                                  
                 }
              
              else
@@ -123,6 +104,8 @@
                 $("#thousandths_rounded_label").fadeTo("slow", 1);
                 $("#thousandths_rounded").fadeTo("slow", 1);    
                
+                input_number = parseFloat(input_text);
+               
                 document.getElementById("original_input_number").innerHTML = input_number;
                 document.getElementById("rounded_int").innerHTML = Math.round(input_number);
                 document.getElementById("sqrt_rounded").innerHTML = Math.round(Math.sqrt(input_number));
@@ -131,6 +114,7 @@
                 document.getElementById("thousandths_rounded").innerHTML = input_number.toFixed(3);    
                
                }
+               
             
              return false;
             
@@ -198,7 +182,7 @@
       
       <h4>Christopher Bulkley - Logston</h4>
       <h5>San Francisco City College - Fall 2020</h5>
-      <h6>Last Updated 2020 - November - 19</h6>
+      <h6>Last Updated 2020 - November - 22</h6>
 
     </footer>
 
