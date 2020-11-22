@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
+    <title>CNIT133-CBL-HW06-P03</title>
+    <meta charset="utf-8">
+    <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 6 Part 3">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+  
+
+  
+
+  
+    <style>
+    
+        textarea {width: 153px;height: 22px;}
+        
+    </style>
+  
+  </head>
+  
+  <body>
+    
+    <section>
+
+      <h1>CNIT 133 - JavaScript, jQuery and AJAX</h1>
+      <h2>Homework 6 - Objects</h2>
+
+      <nav>  
+        <h4>Assignments</h4>
+        <ul>
+          <li><a href="../hw01.html">Homework 1 - Home Page</a></li>
+          <li><a href="../hw02/hw02.html">Homework 2</a></li>
+          <li><a href="../hw03/hw03.html">Homework 3</a></li>
+          <li><a href="../hw04/hw04.html">Homework 4</a></li>
+          <li><a href="../hw05/hw05.html">Homework 5</a></li>
+          <li><b>Homework 6</b></li>
+          <li><a href="../hw07/hw07.html">Homework 7</a></li>
+          <li><a href="../hw08/hw08.html">Homework 8</a></li>
+        </ul>
+      </nav>
+  
+      <article>
+        <h4>Assignment Navigation</h4>
+        <ul>
+          <li><a href="hw06.html">Part 0 - Assignment Home Page</a></li>
+          <li><a href="hw06_part_001.html">Part 1 - Math Processing</a></li>
+          <li><a href="hw06_part_002.html">Part 2 - Text Search</a></li>
+          <li><b>Part 3 - Phone Number Entry</b></li>
+          <li style ="opacity:0"></li>
+        </ul>
+
+        <script>
+    
+          function func_process_phone_number() 
+          
+            {
+            
+             var input_phone_number = document.forms["HW06-P03_form"].elements["input_phone_number"].value;
+             
+             
+             if (input_phone_number.length == 14)
+             
+               {
+               
+                 $("#warning1").fadeTo("slow", 0);
+                 $("#area_code_label").fadeTo("slow", 1);
+                 $("#area_code").fadeTo("slow", 1);               
+                 $("#first_three_digits_label").fadeTo("slow", 1);
+                 $("#first_three_digits").fadeTo("slow", 1);   
+                 $("#last_four_digits_label").fadeTo("slow", 1);
+                 $("#last_four_digits").fadeTo("slow", 1);  
+         
+                 document.forms["HW06-P03_form"].elements["area_code"].value =
+                   
+                   input_phone_number.split('(')[1].split(')')[0];
+                   
+                 document.forms["HW06-P03_form"].elements["first_three_digits"].value =
+                 
+                   input_phone_number.split(' ')[1].split('-')[0];
+                   
+                 document.forms["HW06-P03_form"].elements["last_four_digits"].value =
+                 
+                   input_phone_number.split(' ')[1].split('-')[1];
+               
+                }
+                
+             else
+             
+               {
+               
+                 $("#warning1").fadeTo("slow", 1);
+                 $("#area_code_label").fadeTo("slow", 0.1);
+                 $("#area_code").fadeTo("slow", 0.1);               
+                 $("#first_three_digits_label").fadeTo("slow", 0.1);
+                 $("#first_three_digits").fadeTo("slow", 0.1);   
+                 $("#last_four_digits_label").fadeTo("slow", 0.1);
+                 $("#last_four_digits").fadeTo("slow", 0.1);  
+               
+                 document.forms["HW06-P03_form"].elements["area_code"].value ="";
+                 document.forms["HW06-P03_form"].elements["first_three_digits"].value ="";
+                 document.forms["HW06-P03_form"].elements["last_four_digits"].value ="";
+               
+                }
+             
+
+            
+             return false;
+            
+             }
+    
+
+        </script>
+
+
+
+
+        <form name="HW06-P03_form">
+        
+          <table>
+          
+            <tr>
+              <td style="text-align:right">
+                <label id = "input_phone_number_label" style="opacity:1.0" for="input_phone_number">
+                  <strong>Enter Phone Number:</strong>
+                </label>
+              </td>
+              <td>
+                 <input id="input_phone_number" name="input_phone_number" type="text" maxlength="14" placeholder="(XXX) XXX-XXXX" />
+              </td>
+              
+              
+              
+              
+            </tr>
+            <tr>
+              <td style="text-align:right">
+                <label id = "area_code_label" style="opacity:0.1" for="area_code">
+                  <strong>Area Code:</strong>
+                </label>
+              </td>
+              <td>
+                <textarea readOnly type="text" id="area_code" size="17" style="opacity:0.1"></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:right">
+                <label id = "first_three_digits_label" style="opacity:0.1" for="first_three_digits">
+                  <strong>First Three Digits:</strong>
+                </label>
+              </td>
+              <td>
+                <textarea readOnly type="text" id="first_three_digits" size="17" style="opacity:0.1"></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align:right">
+                <label id = "last_four_digits_label" style="opacity:0.1" for="last_four_digits">
+                  <strong>Last Four Digits:</strong>
+                </label>
+              </td>
+              <td>
+                <textarea readOnly type="text" id="last_four_digits" size="17" style="opacity:0.1"></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td colspan="2" style="text-align:center">
+                <button onclick="return func_process_phone_number()">Click to Process</button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>            
+            <tr>
+              <td colspan="2" style="text-align:center">
+                <span id="warning1" style ="color: red; opacity:0">Please enter a complete phone number.</span>
+              </td>
+            </tr>
+            
+            
+            
+          </table>
+          
+        </form>
+
+
+
+      </article>
+
+    </section>
+    
+    <footer>
+      
+      <h4>Christopher Bulkley - Logston</h4>
+      <h5>San Francisco City College - Fall 2020</h5>
+      <h6>Last Updated 2020 - November - 22</h6>
+
+    </footer>
+
+  </body>
+
+</html>
+
+<script>
+  
+  $('input[name="input_phone_number"]').mask('(000) 000-0000');  
+  
+</script>
