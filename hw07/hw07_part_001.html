@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
+    <title>CNIT133-CBL-HW07-P01</title>
+    <meta charset="utf-8">
+    <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Home Page for Homework 7">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+  </head>
+  
+  <body>
+    
+    <section>
+
+      <h1>CNIT 133 - JavaScript, jQuery and AJAX</h1>
+      <h2>Homework 7 - Object Models / jQuery</h2>
+
+      <nav>  
+        <h4>Assignments</h4>
+        <ul>
+          <li><a href="../hw01.html">Homework 1 - Home Page</a></li>
+          <li><a href="../hw02/hw02.html">Homework 2</a></li>
+          <li><a href="../hw03/hw03.html">Homework 3</a></li>
+          <li><a href="../hw04/hw04.html">Homework 4</a></li>
+          <li><a href="../hw05/hw05.html">Homework 5</a></li>
+          <li><a href="../hw06/hw06.html">Homework 6</a></li>
+          <li><strong>Homework 7</strong></li>
+          <li><a href="../hw08/hw08.html">Homework 8</a></li>
+        </ul>
+      </nav>
+  
+      <article class ="main_article">
+        <h4>Assignment Navigation</h4>
+        <ul>
+          <li><a href="hw07.html">Part 0 - Assignment Home Page</a></li>
+          <li><strong>Part 1 - User Customization</strong></li>
+          <li><a href="hw07_part_002.html">Part 2 - Drop-Down Menu</a></li>
+          <li style ="opacity:0"></li>
+          <li style ="opacity:0"></li>
+        </ul>
+
+        <form name="HW07-P01_form">
+        
+          <table>
+          
+            <tr>
+              <td>
+                <h4>Choose Background Color:</h4>
+              </td>
+            </tr>  
+            <tr>  
+              <td>
+                <input type="radio" id="bg_gray" name="bg_color" checked = "True"
+                       value="bg_gray" onclick="bg_color_change()"><label for="bg_gray">Gray</label>
+              </td>
+            </tr>
+            <tr>  
+              <td>
+                <input type="radio" id="bg_purple" name="bg_color" 
+                       value="bg_purple" onclick="bg_color_change()"><label for="bg_purple">Purple</label>
+              </td>
+            </tr>
+            <tr>  
+              <td>
+                <input type="radio" id="bg_gold" name="bg_color"
+                       value="bg_gold" onclick="bg_color_change()"><label for="bg_gold">Gold</label>
+              </td>
+            </tr>
+            <tr>  
+              <td>
+                <input type="radio" id="bg_blue" name="bg_color"
+                       value="bg_blue" onclick="bg_color_change()"><label for="bg_blue">Blue</label>
+              </td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <h4>Choose Design Feature:</h4>
+              </td>
+            </tr>  
+            <tr>  
+              <td>
+                <input type="checkbox" id="txt_brdr" name="txt_feature"
+                       value="txt_brdr" onclick="dsn_feat_change()"><label for="txt_brdr">Border Around Assignment Page</label>
+              </td>
+            </tr>
+            <tr>  
+              <td>
+                <input type="checkbox" id="txt_undl" name="txt_feature"
+                       value="txt_undl" onclick="dsn_feat_change()"><label for="txt_undl">Underline All Text</label>
+              </td>
+            </tr>
+            <tr>  
+              <td>
+                <input type="checkbox" id="txt_itlc" name="txt_featurde"
+                       value="txt_itlc" onclick="dsn_feat_change()"><label for="txt_itlc">Italicize All Text</label>
+              </td>
+            </tr> 
+            <tr>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>
+                <h4><label for="font_size_opt_element">Choose Text Font Size:</label></h4>
+              </td>
+            </tr>  
+            <tr>
+              <td>
+                <select style="width:300pt" id="font_size_opt_element" onchange="font_size_change()">
+                </select>
+              </td>
+            </tr>  
+            
+          </table>  
+          
+        </form>  
+
+      </article>
+
+    </section>
+
+    <footer>
+      
+      <h4>Christopher Bulkley - Logston</h4>
+      <h5>San Francisco City College - Fall 2020</h5>
+      <h6>Last Updated 2020 - December - 6</h6>
+
+    </footer>
+    
+    <script>
+                           
+      var font_size_list = ['xx-small', 
+                            'x-small',
+                            'small',
+                            'medium',
+                            'large',
+                            'x-large',
+                            'xx-large'];
+      
+      select_list_populator("font_size_opt_element", font_size_list);
+      document.getElementById("font_size_opt_element").value = 'medium';
+      
+      
+      
+      function select_list_populator(select_list_id, list_of_options)
+          
+        {
+
+         var select_list_object = document.getElementById(select_list_id);
+
+         for(var ii = 0; ii < list_of_options.length; ii++)
+          
+           {
+          
+            var option = list_of_options[ii];
+            var option_element = document.createElement("option");
+            option_element.textContent = option;
+                
+            option_element.value = option_element.textContent;
+            select_list_object.appendChild(option_element);
+           
+            }
+        
+         }
+      
+      function bg_color_change()
+      
+        {
+            
+         var x_element = document.getElementsByClassName("main_article");
+            
+         if (document.forms["HW07-P01_form"].elements["bg_gray"].checked)
+             
+           {
+
+            x_element[0].style.backgroundColor = "#f1f1f1";
+
+            }
+                
+         else if (document.forms["HW07-P01_form"].elements["bg_purple"].checked)
+             
+           {
+
+            x_element[0].style.backgroundColor = "#9b808e";
+
+            }
+                
+         else if (document.forms["HW07-P01_form"].elements["bg_gold"].checked)
+             
+           {
+
+            x_element[0].style.backgroundColor = "#c7b369";
+
+            }
+           
+         else if (document.forms["HW07-P01_form"].elements["bg_blue"].checked)
+             
+           {
+
+            x_element[0].style.backgroundColor = "#809b9b";
+
+            }
+              
+           return false;
+            
+           }
+      
+      function dsn_feat_change()
+      
+        {
+        
+         var x_element = document.getElementsByClassName("main_article");
+        
+         if(document.forms["HW07-P01_form"].elements["txt_brdr"].checked)
+         
+           {
+           
+            x_element[0].style.borderStyle="solid";
+           
+            }
+            
+          else
+          
+            {
+           
+            x_element[0].style.borderStyle="none";
+           
+             } 
+          
+         if(document.forms["HW07-P01_form"].elements["txt_undl"].checked)
+         
+           {
+           
+            x_element[0].style.textDecoration = "underline";
+           
+            }
+            
+          else
+          
+            {
+           
+             x_element[0].style.textDecoration = "none";
+           
+             }   
+        
+          if(document.forms["HW07-P01_form"].elements["txt_itlc"].checked)
+         
+           {
+           
+            x_element[0].style.fontStyle = "italic";
+           
+            }
+            
+          else
+          
+            {
+           
+             x_element[0].style.fontStyle = "normal";
+           
+             }   
+        
+        
+         return false;
+         
+         
+         }
+        
+      function font_size_change()
+      
+        {
+        
+         var text_size =  document.getElementById("font_size_opt_element").value;
+         var x_element = document.getElementsByClassName("main_article");
+        
+         x_element[0].style.fontSize = text_size;
+        
+         return false;        
+         
+         }
+      
+      
+      
+    </script>  
+
+  </body>
+
+</html>
