@@ -6,6 +6,45 @@
     <meta charset="utf-8">
     <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Home Page for Homework 7">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+    <style>
+    
+      p {
+	background: url(open.png) no-repeat 0 11px;
+	padding: 10px 0 0 25px;
+	cursor: pointer;
+          }
+
+      p.close {background-image: url(close.png);}
+                
+        .answer {margin-left: 25px;}
+    
+    
+    </style>
+
+    
+    <script type="text/javascript">
+    
+      $(document).ready(function() {
+      
+        $('.answer').hide();
+        $('.main p').toggle(
+          
+          function() {
+	       
+	       $(this).next('.answer').slideDown();
+	       $(this).addClass('close');
+		
+		      },
+		      
+		function() {
+		$(this).next('.answer').fadeOut();
+		$(this).removeClass('close');
+	                    }); // end toggle
+	                  }); // end ready
+    </script>
+    
   </head>
   
   <body>
@@ -13,7 +52,7 @@
     <section>
 
       <h1>CNIT 133 - JavaScript, jQuery and AJAX</h1>
-      <h2>Homework 7 - Object Models / jQuery</h2>
+      <h3>Homework 7 - Object Models / jQuery</h3>
 
       <nav>  
         <h4>Assignments</h4>
@@ -31,13 +70,23 @@
   
       <article>
         <h4>Assignment Navigation</h4>
-        <ul>
-          <li><strong>Part 0 - Assignment Home Page</strong></li>
-          <li><a href="hw07_part_001.html">Part 1 - User Customization</a></li>
-          <li><a href="hw07_part_002.html">Part 2 - Drop-Down Menu</a></li>
-          <li style ="opacity:0"></li>
-          <li style ="opacity:0"></li>
-        </ul>
+        <div class="wrapper">
+          <div class="content">
+	    <div class="main">
+	      <ul>
+	        <h4><img src="nope.png" style="vertical-align:middle"><strong>&nbsp; Part 0 - Assignment Home Page</strong></h4>
+                <p>Part 1 - User Customization</p>
+                <div class="answer" style="display: none;">
+                  This page allows the user to modify different page design features, including font background color, page border, underlining, italicization, and font size. Change requests are applied immediatley. <a href="hw07_part_001.html">Go to HW 7 Part 1</a>
+                </div>
+                <p>Part 2 - Drop-Down Menu</p>
+                <div class="answer" style="display: none;">
+                  A page to demonstrate a drop-down navigation menu to other assigments, as well as their sub parts. <a href="hw07_part_002.html">Go to HW 7 Part 2</a>
+                </div>
+              </ul>   
+            </div>
+          </div>
+        </div>
 
         <h4>Assignment Info</h4>
 
@@ -49,6 +98,10 @@ As the user, please use the list above to navigate to each portion of this assig
 This assignment is due by 11:59 pm on December 7th, 2020.<br><br>
 
 The total amount of non-extra-credit points achievable is 15. 
+
+
+
+
 
       </article>
 
