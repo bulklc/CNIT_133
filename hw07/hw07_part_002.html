@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
+    <title>CNIT133-CBL-HW07-P02</title>
+    <meta charset="utf-8">
+    <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Page for Homework 7 Part 2">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    <style>
+      nav {float:left; display:inline; }
+      nav ul {display:inline;}
+      /*nav ul li {float:left; display:block;}*/
+      nav ul li:hover {background:#E6E6E6; }
+      nav ul li a {display:inline;}
+      nav ul li ul {position:absolute; width:auto; background:#444;}
+      nav ul li ul li {width:auto;}
+      nav ul li ul li a {display:block; padding:15px 10px; color:#FFF;}
+      nav ul li ul li:hover a {background:#D1D1D1; color:#F00;}
+      nav ul li ul.fallback {display:none;}
+      nav ul li:hover ul.fallback {display:block;}
+    </style>    
+     
+    <script>
+    
+      $(document).ready(function(){
+      $('nav li ul').hide().removeClass('fallback');
+      $('nav li').hover(
+      
+        function () {
+        
+          $('ul', this).stop().slideDown(200);
+          
+                     },
+                     
+        function () {
+        
+          $('ul', this).stop().slideUp(200);
+                   
+                     });});
+   
+    </script> 
+        
+        
+  </head>
+  
+  <body>
+    
+    <section>
+
+      <h1>CNIT 133 - JavaScript, jQuery and AJAX</h1>
+      <h2>Homework 7 - Object Models / jQuery</h2>
+
+      <nav>  
+        <h4>Assignments</h4>
+        <ul>
+          <li>
+            <a href="../hw01.html">Homework 1 - Home Page</a>  
+          </li>
+          <li>
+            <a href="../hw02/hw02.html">Homework 2</a>
+            <ul class="" style="display: none;">
+              <li><a href="../hw02/hw02_part_001.html">Part 1 - Text Display</a></li>
+              <li><a href="../hw02/hw02_part_002.html">Part 2 - Input Boxes I</a></li>
+              <li><a href="../hw02/hw02_part_003.html">Part 3 - Input Boxes II</a></li>
+              <li><a href="../hw02/hw02_part_004.html">Part 4 - Extra Credit</a></li>
+            </ul>  
+          </li>
+          <li>
+            <a href="../hw03/hw03.html">Homework 3</a>
+            <ul class="" style="display: none;">
+              <li><a href="../hw03/hw03_part_001.html">Part 1 - Student Grades</a></li>
+              <li><a href="../hw03/hw03_part_002.html">Part 2 - Commissions</a></li>
+              <li><a href="../hw03/hw03_part_003.html">Part 3 - Fahrenheit / Celsius</a></li>
+              <li><a href="../hw03/hw03_part_004.html">Part 4 - Extra Credit</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../hw04/hw04.html">Homework 4</a>
+            <ul class="" style="display: none;">
+              <li><a href="../hw04/hw04_part_001.html">Part 1 - Sum and Product Loops</a></li>
+              <li><a href="../hw04/hw04_part_002.html">Part 2 - Compound Interest Loops</a></li>
+              <li><a href="../hw04/hw04_part_003.html">Part 3 - Extra Credit</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="../hw05/hw05.html">Homework 5</a>
+            <ul class="" style="display: none;">      
+              <li><a href="../hw05/hw05_part_001.html">Part 1 - Input Form</a></li>
+              <li><a href="../hw05/hw05_part_002.html">Part 2 - Pulldown Menus</a></li>
+              <li><a href="../hw05/hw05_part_003.html">Part 3 - Census Info</a></li>       
+            </ul>    
+          </li>
+          <li>
+            <a href="../hw06/hw06.html">Homework 6</a>
+            <ul class="" style="display: none;">       
+              <li><a href="../hw06/hw06_part_001.html">Part 1 - Math Processing</a></li>
+              <li><a href="../hw06/hw06_part_002.html">Part 2 - Text Search</a></li>
+              <li><a href="../hw06/hw06_part_003.html">Part 3 - Phone Number Entry</a></li>
+            </ul>
+          </li>
+          <li>
+            <strong>Homework 7</strong>
+          </li>
+          <li><a href="../hw08/hw08.html">Homework 8</a></li>
+        </ul>
+      </nav>
+  
+      <article>
+      
+
+      
+      
+      
+      
+        <h4>Assignment Navigation</h4>
+        <ul>
+          <li><a href="hw07.html">Part 0 - Assignment Home Page</a></li>
+          <li><a href="hw07_part_001.html">Part 1 - User Customization</a></li>
+          <li><strong>Part 2 - Drop-Down Menu</strong></li>
+          <li style ="opacity:0"></li>
+          <li style ="opacity:0"></li>
+        </ul>
+
+
+        <h4>Assignment Info</h4>
+      
+        Explore the assignments menu to the left.<br>
+        Hover above links for Homeworks 2 through 6 to display active links to each assignment's sub-parts.
+        
+      </article>
+
+    </section>
+
+    <footer>
+      
+      <h4>Christopher Bulkley - Logston</h4>
+      <h5>San Francisco City College - Fall 2020</h5>
+      <h6>Last Updated 2020 - December - 6</h6>
+
+    </footer>
+    
+    <script>
+                           
+      
+      
+      
+    </script>  
+
+  </body>
+
+</html>
