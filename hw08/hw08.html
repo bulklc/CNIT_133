@@ -1,12 +1,37 @@
 <!DOCTYPE html>
+
+
+
 <html lang="en">
 <head>
 <link rel="stylesheet" href="../styles/CNIT_133_styles.css">
-<title>CNIT 133 - Christopher Bulkley - Logston - Homework 8 Page</title>
+<title>CNIT133-CBL-HW08-P00</title>
 <meta charset="utf-8">
 <meta name="description" content="CNIT 133 - Christopher Bulkley - Logston - Homework 8 Page">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+
+/* SOURCE OF HELP: https://www.w3schools.com/php/php_ajax_php.asp */
+
+function showHint(str) {
+  if (str.length == 0) {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "gethint.php?q=" + str, true);
+    xmlhttp.send();
+  }
+}
+</script>
+
 
 </head>
 <body>
@@ -26,13 +51,28 @@
       <li><a href="../hw05/hw05.html">Homework 5</a></li>
       <li><a href="../hw06/hw06.html">Homework 6</a></li>
       <li><a href="../hw07/hw07.html">Homework 7</a></li>
-      <li><b>Homework 8</b></li>
+      <li><strong>Homework 8</strong></li>
     </ul>
   </nav>
   
   <article>
-  <h4>Assignment Info</h4>
-    <p>Info to come</p>
+  
+    <h4>Assignment Info</h4>
+     
+     This web page has been created in response to instructor direction provided on the <a href="https://ccsf.instructure.com/courses/37868/assignments/481540" target="_blank">Homework 8 Page on Canvas</a>. <br><br>
+
+This assignment is due by 11:59 pm on December 14th, 2020.<br><br>
+
+The total amount of non-extra-credit points achievable is 15. 
+  
+  
+    <br><br>  
+    <p><strong>Begin typing a name in the input field below, starting with any letter of the alphabet:</strong></p>
+    <form action="">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname" onkeyup="showHint(this.value)">
+    </form>
+    <p>Suggestions: <span id="txtHint"></span></p>
   </article>
 
 </section>
@@ -40,7 +80,7 @@
 <footer>
 <h4>Christopher Bulkley - Logston</h4>
 <h5>San Francisco City College - Fall 2020</h5>
-<h6>Last Updated 2020 - August - 29</h6>
+<h6>Last Updated 2020 - December - 12</h6>
 </footer>
 
 </body>
